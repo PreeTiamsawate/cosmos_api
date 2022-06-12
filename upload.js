@@ -27,7 +27,8 @@ var upload = multer({
             cb(null, { fieldName: file.fieldname });
         },
         key: function (req, file, cb) {
-            cb(null, Date.now().toString());
+            const s3FileName = file.originalname+Date.now().toString()
+            cb(null, req.body.folder+'/'+s3FileName);
         },
         contentType: multerS3.AUTO_CONTENT_TYPE,
     })
@@ -39,9 +40,6 @@ app.post("/upload", upload.fields([ {
     name: 'image_2', maxCount: 1
   }
 ]), function (req, res, next) {
-    if(!req.files.image_2){
-        console.log("No image 2");
-    }
     
     res.send(req.files);
 });
@@ -54,7 +52,7 @@ const s3Delete=function(bucketName, key){
           console.log(err, err.stack);
           throw err   
         } 
-        else {console.log("Deleted");     }                // deleted
+        else {console.log("Deleted "+ key+ " from "+bucketName+" bucket.");     }                // deleted
       });
 } 
 

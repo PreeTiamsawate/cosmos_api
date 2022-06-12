@@ -18,7 +18,9 @@ const storage= multerS3({
         cb(null, { fieldName: file.fieldname });
     },
     key: function (req, file, cb) {
-        cb(null, file.originalname+Date.now().toString()+Math.floor(Math.random() * 90 + 10).toString());
+        const s3FileName = `${file.originalname}-${Date.now().toString()}-${Math.floor(Math.random() * 90 + 10).toString()}`;
+        const folder = req.body.code;
+        cb(null,`${folder}/${s3FileName}`);
     },
     contentType: multerS3.AUTO_CONTENT_TYPE,
 })
