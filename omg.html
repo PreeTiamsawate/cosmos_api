@@ -1,17 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
+        body {
             background-color: aqua;
         }
     </style>
 </head>
+
+
+
 <body>
-    <img src="https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/1654855230004" alt="">
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <SCript>
+
+        const getData = async function () {
+            const res = await axios.post('http://localhost:3000/api/user/login', {
+                "username": "starhunter",
+                "password": "@Starhunter888"
+            })
+            console.log(res)
+
+            const data = await axios.get('http://localhost:3000/api/user/getuser')
+            console.log(data)
+        }
+
+        getData();
+        // axios.post('http://localhost:3000/api/user/testuser', {
+        //     "username": "starhunter",
+        //     "password": "@Starhunter888"
+        // }).then(function (response) {
+        //     console.log(response);
+        // })
+
+
+
+
+    </SCript>
 </body>
+
 </html>

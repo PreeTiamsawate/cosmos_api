@@ -4,3 +4,7 @@ module.exports.isLoggedIn = (req, res, next) => {
     }
     next();
 };
+
+// module.exports.authenticateToken= (req, res, next)=>{
+
+// }

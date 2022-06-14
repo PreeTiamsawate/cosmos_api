@@ -10,6 +10,9 @@ const UserSchema = new Schema({
         default: 'admin',
         enum: ['customer', 'admin'],
     },
+    access_token: {
+        type: String
+    }
 
 });
 

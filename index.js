@@ -13,11 +13,22 @@ const catchAsync = require('./utils/catchAsync');;
 const userRoutes = require('./routes/user_routes');
 const candidateRoutes = require('./routes/candidate_routes');
 
-const cors = require("cors")
-app.use(cors({
-    origin: "*"
-}))
 
+const cors = require("cors")
+// var whitelist = ['null', 'http://localhost:3000']
+// app.use(cors({
+//     origin: function (origin, callback) {
+//         if (whitelist.indexOf(origin) !== -1) {
+//           callback(null, true)
+//         } else {
+//           callback(new Error('Not allowed by CORS'))
+//         }
+//       },
+//     credentials: true,
+// }))
+app.use(cors({
+    origin:'*'
+}))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -31,13 +42,16 @@ mongoose.connect('mongodb://localhost:27017/cosmosapp', { useNewUrlParser: true,
     })
 const sessionConfig = {
     secret: 'secretKey',
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        expires: Date.now() + 24 * 3600 * 1000 * 30
+        // secure: true,
+        // sameSite: 'None',
+        expires: Date.now() + 24 * 3600 * 1000 * 30,
     }
 }
+
 app.use(session(sessionConfig));
 
 app.use(passport.initialize());
@@ -57,8 +71,8 @@ app.all('*', async (req, res, next) => {
 });
 app.use((err, req, res, next) => {
     const { statusCode = 500, message = "Something went wrong." } = err;
-    // res.status(statusCode).send(message);
-    res.json(err);
+    res.status(statusCode).send(message);
+    // res.json(err);
 });
 
 app.listen(process.env.PORT || 3000, () => {
