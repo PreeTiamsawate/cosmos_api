@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
 const Candidate = require('../models/Candidate');
-const { isLoggedIn } = require('../middleware');
+const { authenticateToken } = require('../middleware');
 const multer = require("multer");
 const { storage, bucketName, s3Delete } = require('../utils/awsS3');
 
@@ -35,7 +35,7 @@ router.get('/all_count', catchAsync(async (req, res, next) => {
     }).clone();
 
 }));
-router.post('/add', upload.fields([{
+router.post('/add',authenticateToken, upload.fields([{
     name: 'image_profile', maxCount: 1
 }, {
     name: 'image_1', maxCount: 1
@@ -112,12 +112,12 @@ router.get('/show/:id', catchAsync(async (req, res, next) => {
     }
     res.json(candidate);
 }));
-router.delete('/delete/:id', catchAsync(async (req, res, next) => {
+router.delete('/delete/:id',authenticateToken, catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const gone = await Candidate.findByIdAndDelete(id);
     res.json(gone);
 }));
-router.patch('/edit/:id', upload.fields([{
+router.patch('/edit/:id',authenticateToken, upload.fields([{
     name: 'image_profile', maxCount: 1
 }, {
     name: 'image_1', maxCount: 1
