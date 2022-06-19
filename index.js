@@ -13,6 +13,8 @@ const catchAsync = require('./utils/catchAsync');;
 const userRoutes = require('./routes/user_routes');
 const candidateRoutes = require('./routes/candidate_routes');
 
+const DateOfBirth = require('./models/DateOfBirth');
+
 
 const cors = require("cors")
 // var whitelist = ['null', 'http://localhost:3000']
@@ -27,7 +29,7 @@ const cors = require("cors")
 //     credentials: true,
 // }))
 app.use(cors({
-    origin:'*'
+    origin: '*'
 }))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -60,15 +62,49 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.get('/hello', catchAsync(async (req, res, next) => {
-    res.send("Hello 2");
+app.get('/api/hello', catchAsync(async (req, res, next) => {
+    res.send("Hello 5");
 }));
 app.use('/api/candidate', candidateRoutes);
 app.use('/api/user', userRoutes);
 
+app.post('/api/adddate', catchAsync(async (req, res, next) => {
+    const { date_of_birth,message } = req.body;
+    const dateOfBirth = new DateOfBirth({
+        date_of_birth: date_of_birth,
+        message: message
+    })
+
+    const show = await dateOfBirth.save();
+    res.json(show);
+}));
+app.get('/api/getdate/', catchAsync(async (req, res, next) => {
+    const { id } = req.params;
+    let dates = await DateOfBirth.aggregate([
+        { $match: {} },
+        {
+            $set: {
+                date_of_birth: { $dateToString: { format: "%Y-%m-%d", date: "$date_of_birth" } },
+            }
+
+        }
+    ])
+    res.json(dates);
+}));
+app.get('/api/getdate/:id', catchAsync(async (req, res, next) => {
+    const { id } = req.params;
+    let date = await DateOfBirth.findOne({
+        "$expr": {
+            "$eq": ["$_id", id]
+        }
+    });
+    res.json(date);
+}));
+
 app.all('*', async (req, res, next) => {
     next(new ExpressError('Page Not Found', 404))
 });
+
 app.use((err, req, res, next) => {
     const { statusCode = 500, message = "Something went wrong." } = err;
     res.status(statusCode).send(message);

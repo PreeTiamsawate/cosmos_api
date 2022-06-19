@@ -77,6 +77,21 @@ const candidateSchema = new Schema({
             key: String,
         },
         // validate: [arrayLimit, 'ใส่รูปได้มากสุด 5 รูป']
+    },
+    date_of_birth:{
+        type:Date, 
+    },
+    height:{
+        type:String
+    },
+    province:{
+        type:String
+    },
+    hobby:{
+        type:String
+    },
+    like:{
+        type:String
     }
 });
 // function arrayLimit(val) {

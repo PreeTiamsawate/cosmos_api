@@ -8,29 +8,58 @@ const { storage, bucketName, s3Delete } = require('../utils/awsS3');
 
 const upload = multer({ storage })
 
-router.get('/index', catchAsync(async (req, res, next) => {
-    const { q, skip , limit} = req.query;   
-    let candidates = await Candidate
-    .find({
-        $or: [
-            { "code": { "$regex": q, "$options": "i" } },
-            { "first_name_th": { "$regex": q, "$options": "i" } },
-            { "first_name_en": { "$regex": q, "$options": "i" } },
-        ]
-    }).sort('code').skip(parseInt(skip)-1).limit(parseInt(limit)).lean()
+// router.get('/index', catchAsync(async (req, res, next) => {
+//     const { q, skip , limit} = req.query;   
+//     let candidates = await Candidate
+//     .find({
+//         $or: [
+//             { "code": { "$regex": q, "$options": "i" } },
+//             { "first_name_th": { "$regex": q, "$options": "i" } },
+//             { "first_name_en": { "$regex": q, "$options": "i" } },
+//         ]
+//     }).sort('code').skip(parseInt(skip)-1).limit(parseInt(limit)).lean()
 
-    for(let i =0; i < candidates.length; i++){
-        if(candidates[i+1]) candidates[i].next = candidates[i+1]._id ;
-        else candidates[i].next =null;
-        if(candidates[i-1]) candidates[i].previous = candidates[i-1]._id ;
-        else candidates[i].previous =null;
+//     for(let i =0; i < candidates.length; i++){
+//         if(candidates[i+1]) candidates[i].next = candidates[i+1]._id ;
+//         else candidates[i].next =null;
+//         if(candidates[i-1]) candidates[i].previous = candidates[i-1]._id ;
+//         else candidates[i].previous =null;
+//     }
+//     res.json(candidates);
+// }));
+router.get('/index', catchAsync(async (req, res, next) => {
+    const { q, skip, limit } = req.query;
+    let candidates = await Candidate
+        .aggregate([
+            {
+                $match: {
+                    $or: [
+                        { "code": { "$regex": q, "$options": "i" } },
+                        { "first_name_th": { "$regex": q, "$options": "i" } },
+                        { "first_name_en": { "$regex": q, "$options": "i" } },
+                    ]
+                }
+            },
+            {
+                $set: {
+                    date_of_birth: { $dateToString: { format: "%Y-%m-%d", date: "$date_of_birth" } },
+                }
+
+            }
+        ]).sort('code').skip(parseInt(skip || 1) - 1).limit(parseInt(limit || 100000))
+
+    for (let i = 0; i < candidates.length; i++) {
+        if (candidates[i + 1]) candidates[i].next = candidates[i + 1]._id;
+        else candidates[i].next = null;
+        if (candidates[i - 1]) candidates[i].previous = candidates[i - 1]._id;
+        else candidates[i].previous = null;
     }
     res.json(candidates);
 }));
 router.get('/all_count', catchAsync(async (req, res, next) => {
-    await Candidate.countDocuments({},function(err,all_candidate_count){
-        if(err) next(err);
-     
+    await Candidate.countDocuments({}, function (err, all_candidate_count) {
+        if (err) next(err);
+
         res.json(all_candidate_count);
     }).clone();
 
@@ -49,19 +78,7 @@ router.post('/add',authenticateToken, upload.fields([{
 ]), catchAsync(async (req, res, next) => {
     const { ref_code, code, first_name_th, last_name_th, first_name_en, last_name_en, nick_name_th, nick_name_en, instagrame_acc, facebook_acc, candidate_status } = req.body;
     const { image_profile, image_1, image_2, image_3, image_4 } = req.files;
-    const candidate = new Candidate({
-        ref_code: ref_code,
-        code: code,
-        first_name_th: first_name_th,
-        last_name_th: last_name_th,
-        first_name_en: first_name_en,
-        last_name_en: last_name_en,
-        nick_name_th: nick_name_th,
-        nick_name_en: nick_name_en,
-        instagrame_acc: instagrame_acc,
-        facebook_acc: facebook_acc,
-        candidate_status: candidate_status,
-    });
+    const candidate = new Candidate(req.body);
     if (image_profile) {
         candidate.image_profile = {
             url: image_profile[0].location,
@@ -98,26 +115,52 @@ router.post('/add',authenticateToken, upload.fields([{
 router.get('/show/:id', catchAsync(async (req, res, next) => {
     const { id } = req.params;
 
-    let candidates = await Candidate.find({}).sort('code').lean()
-    for(let i =0; i < candidates.length; i++){
-        if(candidates[i+1]) candidates[i].next = candidates[i+1]._id ;
-        else candidates[i].next =null;
-        if(candidates[i-1]) candidates[i].previous = candidates[i-1]._id ;
-        else candidates[i].previous =null;
-        if(candidates[i]._id == id){
-            console.log(true); 
+    let candidates = await Candidate.aggregate([
+        {
+            $match: {}
+        },
+        {
+            $set: {
+                date_of_birth: { $dateToString: { format: "%Y-%m-%d", date: "$date_of_birth" } },
+            }
+        }
+    ]).sort('code')
+    for (let i = 0; i < candidates.length; i++) {
+        if (candidates[i + 1]) candidates[i].next = candidates[i + 1]._id;
+        else candidates[i].next = null;
+        if (candidates[i - 1]) candidates[i].previous = candidates[i - 1]._id;
+        else candidates[i].previous = null;
+        if (candidates[i]._id == id) {
+            console.log(true);
             var candidate = candidates[i];
-        } 
+        }
         else console.log(false)
     }
     res.json(candidate);
 }));
-router.delete('/delete/:id',authenticateToken, catchAsync(async (req, res, next) => {
+// router.get('/show/:id', catchAsync(async (req, res, next) => {
+//     const { id } = req.params;
+
+//     let candidates = await Candidate.find({}).sort('code').lean()
+//     for (let i = 0; i < candidates.length; i++) {
+//         if (candidates[i + 1]) candidates[i].next = candidates[i + 1]._id;
+//         else candidates[i].next = null;
+//         if (candidates[i - 1]) candidates[i].previous = candidates[i - 1]._id;
+//         else candidates[i].previous = null;
+//         if (candidates[i]._id == id) {
+//             console.log(true);
+//             var candidate = candidates[i];
+//         }
+//         else console.log(false)
+//     }
+//     res.json(candidate);
+// }));
+router.delete('/delete/:id', authenticateToken, catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const gone = await Candidate.findByIdAndDelete(id);
     res.json(gone);
 }));
-router.patch('/edit/:id',authenticateToken, upload.fields([{
+router.patch('/edit/:id'/*, authenticateToken*/, upload.fields([{
     name: 'image_profile', maxCount: 1
 }, {
     name: 'image_1', maxCount: 1
@@ -129,7 +172,7 @@ router.patch('/edit/:id',authenticateToken, upload.fields([{
     name: 'image_4', maxCount: 1
 },
 ]), catchAsync(async (req, res, next) => {
-    const { ref_code, code, first_name_th, last_name_th, first_name_en, last_name_en, nick_name_th, nick_name_en, instagrame_acc, facebook_acc, candidate_status } = req.body;
+    const { ref_code, code, first_name_th, last_name_th, first_name_en, last_name_en, nick_name_th, nick_name_en, instagrame_acc, facebook_acc, candidate_status, date_of_birth, height, province, hobby, like } = req.body;
     const { image_profile, image_1, image_2, image_3, image_4 } = req.files;
     const { id } = req.params;
 
@@ -181,6 +224,11 @@ router.patch('/edit/:id',authenticateToken, upload.fields([{
     candidate.instagrame_acc = instagrame_acc;
     candidate.facebook_acc = facebook_acc;
     candidate.candidate_status = candidate_status;
+    candidate.date_of_birth = date_of_birth;
+    candidate.height = height,
+        candidate.province = province;
+    candidate.hobby = hobby;
+    candidate.like = like;
 
     await candidate.save();
     res.json(candidate);
@@ -188,17 +236,34 @@ router.patch('/edit/:id',authenticateToken, upload.fields([{
 
 router.get('/search', catchAsync(async (req, res, next) => {
     const { q } = req.query;
-    const candidates = await Candidate.find({
-        $or: [
-            { "code": { "$regex": q, "$options": "i" } },
-            { "first_name_th": { "$regex": q, "$options": "i" } },
-            { "nick_name_th": { "$regex": q, "$options": "i" } },
-            { "first_name_en": { "$regex": q, "$options": "i" } },
-            { "nick_name_en": { "$regex": q, "$options": "i" } }
-        ]
-    });
+    const candidates = await Candidate.aggregate([
+        {
+            $match: {
+                $or: [
+                    { "code": { "$regex": q, "$options": "i" } },
+                    { "first_name_th": { "$regex": q, "$options": "i" } },
+                    { "nick_name_th": { "$regex": q, "$options": "i" } },
+                    { "first_name_en": { "$regex": q, "$options": "i" } },
+                    { "nick_name_en": { "$regex": q, "$options": "i" } }
+                ]
+            }
+        },
+        {
+            $set: {
+                date_of_birth: { $dateToString: { format: "%Y-%m-%d", date: "$date_of_birth" } },
+            }
+    
+        }
+    ]).sort('code');
+    for (let i = 0; i < candidates.length; i++) {
+        if (candidates[i + 1]) candidates[i].next = candidates[i + 1]._id;
+        else candidates[i].next = null;
+        if (candidates[i - 1]) candidates[i].previous = candidates[i - 1]._id;
+        else candidates[i].previous = null;
+    }
     res.json(candidates);
 }));
+
 
 router.get('/total_points', catchAsync(async (req, res, next) => {
     const allTotalPoints = await Candidate.find({}).select('code total_points');
