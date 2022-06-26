@@ -12,6 +12,7 @@ const ExpressError = require('./utils/ExpressError');
 const catchAsync = require('./utils/catchAsync');;
 const userRoutes = require('./routes/user_routes');
 const candidateRoutes = require('./routes/candidate_routes');
+const VoterParameterRoutes = require('./routes/vote_parameter_route');
 
 const DateOfBirth = require('./models/DateOfBirth');
 
@@ -46,12 +47,10 @@ const sessionConfig = {
     secret: 'secretKey',
     resave: true,
     saveUninitialized: true,
-    cookie: {
-        httpOnly: true,
-        // secure: true,
-        // sameSite: 'None',
-        expires: Date.now() + 24 * 3600 * 1000 * 30,
-    }
+    // cookie: {
+    //     httpOnly: true,
+    //     expires: Date.now() + 24 * 3600 * 1000 * 30,
+    // }
 }
 
 app.use(session(sessionConfig));
@@ -63,10 +62,11 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.get('/api/hello', catchAsync(async (req, res, next) => {
-    res.send("Hello 5");
+    res.send("Hello 6");
 }));
 app.use('/api/candidate', candidateRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/voteParameter', VoterParameterRoutes);
 
 app.post('/api/adddate', catchAsync(async (req, res, next) => {
     const { date_of_birth,message } = req.body;
@@ -76,7 +76,14 @@ app.post('/api/adddate', catchAsync(async (req, res, next) => {
     })
 
     const show = await dateOfBirth.save();
-    res.json(show);
+    const dates = await DateOfBirth.find({}).sort('dateOfBirth')
+
+    for(let date of dates){
+        date.message = date.message+'Hello';
+    }
+    // await dates.save();
+
+    res.json(dates);
 }));
 app.get('/api/getdate/', catchAsync(async (req, res, next) => {
     const { id } = req.params;

@@ -125,17 +125,28 @@ router.get('/show/:id', catchAsync(async (req, res, next) => {
             }
         }
     ]).sort('code')
-    for (let i = 0; i < candidates.length; i++) {
-        if (candidates[i + 1]) candidates[i].next = candidates[i + 1]._id;
-        else candidates[i].next = null;
-        if (candidates[i - 1]) candidates[i].previous = candidates[i - 1]._id;
-        else candidates[i].previous = null;
-        if (candidates[i]._id == id) {
-            console.log(true);
-            var candidate = candidates[i];
-        }
-        else console.log(false)
-    }
+
+    var candidate = candidates.find((can)=> can._id == id)
+    var prevCand = candidates[candidates.indexOf(candidate)-1];
+    var nextCand = candidates[candidates.indexOf(candidate)+1];
+
+    if(prevCand) candidate.previous = prevCand._id;
+    else candidate.previous = null;
+
+    if(nextCand) candidate.next = nextCand._id;
+    else candidate.next = null;
+    
+    // for (let i = 0; i < candidates.length; i++) {
+    //     if (candidates[i + 1]) candidates[i].next = candidates[i + 1]._id;
+    //     else candidates[i].next = null;
+    //     if (candidates[i - 1]) candidates[i].previous = candidates[i - 1]._id;
+    //     else candidates[i].previous = null;
+    //     if (candidates[i]._id == id) {
+    //         console.log(true);
+    //         var candidate = candidates[i];
+    //     }
+    //     else console.log(false)
+    // }
     res.json(candidate);
 }));
 // router.get('/show/:id', catchAsync(async (req, res, next) => {
@@ -274,6 +285,15 @@ router.get('/total_points/:id', catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const totalPointsById = await Candidate.findById(id).select('code total_points');
     res.json(totalPointsById);
+}));
+router.patch('/total_points/:id', catchAsync(async (req, res, next) => {
+    const { id } = req.params;
+    const {total_points} = req.body;
+    const newTotalPointsById = await Candidate.findByIdAndUpdate(id,
+        {total_points:total_points},
+        {returnOriginal: false}
+        ).select('code total_points');
+    res.json(newTotalPointsById);
 }));
 
 

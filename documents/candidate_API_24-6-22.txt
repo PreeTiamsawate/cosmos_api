@@ -1,0 +1,371 @@
+Candidate Api ========================================================
+
+Add Candidate Api-------------------------------------------------
+post: https://cosmos.starhunterent.com/api/candidate/add
+header
+Authorization: token **access_token**
+request
+{
+    "ref_code": String,
+    "code": String (unique, required)",
+    "first_name_th": String (required),
+    "first_name_en": String (required),
+    "last_name_th": String (required),
+    "last_name_en": String (required),
+    "nick_name_th": String (required),
+    "nick_name_en": String (required),
+    "instagrame_acc": String (required),
+    "facebook_acc": String (required),
+    "candidate_status": "เข้ารอบ" or "ตกรอบแล้ว" (required)
+    "image_profile": file,
+    "image_1": file,
+    "image_2": file,
+    "image_3": file,
+    "image_4": file,
+    "date_of_birth":String,
+    "height": String,
+    "province": String,
+    "hobby": String,
+    "like": String,
+
+
+}
+response (example)
+{
+    "code": "CM-0",
+    "first_name_th": "ปรี",
+    "last_name_th": "เทียม",
+    "first_name_en": "Pree",
+    "last_name_en": "Tiam",
+    "nick_name_th": "บุ๊ง",
+    "nick_name_en": "Boong",
+    "instagrame_acc": "preegm",
+    "facebook_acc": "preeface",
+    "total_points": 0,
+    "candidate_status": "เข้ารอบ",
+    "add_date": 1654957456618,
+    "image_profile": {
+        "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/acme.png165495807158783",
+        "key": "acme.png165495807158783"
+    },
+    "images": {
+        "image_1": {
+            "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/favicon.ico165495807158783",
+            "key": "favicon.ico165495807158783"
+        },
+        "image_2": {
+            "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/laravel-logo.png165495807158721",
+            "key": "laravel-logo.png165495807158721"
+        },
+        "image_3": {
+            "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/logo.png165495807159592",
+            "key": "logo.png165495807159592"
+        },
+        "image_4": {
+            "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/no-image.png165495807159698",
+            "key": "no-image.png165495807159698"
+        }
+    },
+    "date_of_birth": "2012-05-05T00:00:00.000Z",
+    "height": "150",
+    "province": "Bangkok",
+    "hobby": "sex",
+    "like": "sex"
+    "_id": "62a4a7f7553466c70dcf6a9e",
+    "__v": 0
+}
+
+Get All Candidates sorted by code Api-------------------------------------------------
+get: https://cosmos.starhunterent.com/api/candidate/index?q=&skip=&limit=
+q search params code,first_name_th ,first_name_en
+
+limit : limit size of query
+example limit 4 -> query 4 candidates
+
+skip : start from skip number
+example skip 10 -> query start from the 10th cnadidate 
+
+response (example)
+[
+    {
+        "_id": "62af15e05e6d9cfb59fc0ffa",
+        "code": "TEST01",
+        "first_name_th": "ภมิ1",
+        "last_name_th": "พัทพ1",
+        "first_name_en": "poom1",
+        "last_name_en": "pat1",
+        "nick_name_th": "โจ",
+        "nick_name_en": "โจ้",
+        "instagrame_acc": "jobad",
+        "facebook_acc": "joe",
+        "total_points": 0,
+        "candidate_status": "ตกรอบแล้ว",
+        "add_date": 1655641512279,
+        "image_profile": {
+            "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/TEST01/no-image.png-1655641567976-44",
+            "key": "TEST01/no-image.png-1655641567976-44"
+        },
+        "date_of_birth": "2012-01-01",
+        "height": "150",
+        "province": "Bangkok",
+        "hobby": "sex",
+        "like": "sex",
+        "__v": 0,
+        "next": "62af16005e6d9cfb59fc0ffc",
+        "previous": null
+    },
+    {
+        "_id": "62af16005e6d9cfb59fc0ffc",
+        "code": "TEST02",
+        "first_name_th": "ภมิ2",
+        "last_name_th": "พัทพ2",
+        "first_name_en": "poom2",
+        "last_name_en": "pat1",
+        "nick_name_th": "โจ",
+        "nick_name_en": "โจ้",
+        "instagrame_acc": "jobad",
+        "facebook_acc": "joe",
+        "total_points": 0,
+        "candidate_status": "ตกรอบแล้ว",
+        "add_date": 1655641512279,
+        "image_profile": {
+            "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/TEST02/no-image.png-1655641600018-25",
+            "key": "TEST02/no-image.png-1655641600018-25"
+        },
+        "date_of_birth": "2012-02-02",
+        "height": "150",
+        "province": "Bangkok",
+        "hobby": "sex",
+        "like": "sex",
+        "__v": 0,
+        "next": "62af160f5e6d9cfb59fc0ffe",
+        "previous": "62af15e05e6d9cfb59fc0ffa"
+    },
+    {
+        "_id": "62af160f5e6d9cfb59fc0ffe",
+        "code": "TEST03",
+        "first_name_th": "ภมิ33",
+        "last_name_th": "พัทพ3",
+        "first_name_en": "poom33",
+        "last_name_en": "pat33",
+        "nick_name_th": "โจ",
+        "nick_name_en": "โจ้",
+        "instagrame_acc": "jobad",
+        "facebook_acc": "joe",
+        "total_points": 0,
+        "candidate_status": "ตกรอบแล้ว",
+        "add_date": 1655641512279,
+        "image_profile": {
+            "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/TEST03/no-image.png-1655643481869-65",
+            "key": "TEST03/no-image.png-1655643481869-65"
+        },
+        "date_of_birth": "2012-05-05",
+        "height": "150",
+        "province": "Bangkok",
+        "hobby": "sex",
+        "like": "sex",
+        "__v": 0,
+        "images": {
+            "image_3": {
+                "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/TEST03/no-image.png-1655643481870-74",
+                "key": "TEST03/no-image.png-1655643481870-74"
+            }
+        },
+        "next": "62af16255e6d9cfb59fc1000",
+        "previous": "62af16005e6d9cfb59fc0ffc"
+    },
+    {
+        "_id": "62af16255e6d9cfb59fc1000",
+        "code": "TEST04",
+        "first_name_th": "ภมิ4",
+        "last_name_th": "พัทพ4",
+        "first_name_en": "poom4",
+        "last_name_en": "pat4",
+        "nick_name_th": "โจ",
+        "nick_name_en": "โจ้",
+        "instagrame_acc": "jobad",
+        "facebook_acc": "joe",
+        "total_points": 0,
+        "candidate_status": "ตกรอบแล้ว",
+        "add_date": 1655641512279,
+        "image_profile": {
+            "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/TEST04/no-image.png-1655641637365-14",
+            "key": "TEST04/no-image.png-1655641637365-14"
+        },
+        "date_of_birth": "2012-04-04",
+        "height": "150",
+        "province": "Bangkok",
+        "hobby": "sex",
+        "like": "sex",
+        "__v": 0,
+        "next": null,
+        "previous": "62af160f5e6d9cfb59fc0ffe"
+    }
+]
+
+Get Total Candidate count
+get: https://cosmos.starhunterent.com/api/candidate/all_count
+response (example)
+20
+
+Get one Candidate by id (_id field from database) Api-------------------------------------------------
+get: https://cosmos.starhunterent.com/api/candidate/show/:id
+response (example)
+{
+    "_id": "62af16255e6d9cfb59fc1000",
+    "code": "TEST04",
+    "first_name_th": "ภมิ4",
+    "last_name_th": "พัทพ4",
+    "first_name_en": "poom4",
+    "last_name_en": "pat4",
+    "nick_name_th": "โจ",
+    "nick_name_en": "โจ้",
+    "instagrame_acc": "jobad",
+    "facebook_acc": "joe",
+    "total_points": 0,
+    "candidate_status": "ตกรอบแล้ว",
+    "add_date": 1655641512279,
+    "image_profile": {
+        "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/TEST04/no-image.png-1655641637365-14",
+        "key": "TEST04/no-image.png-1655641637365-14"
+    },
+    "date_of_birth": "2012-04-04",
+    "height": "150",
+    "province": "Bangkok",
+    "hobby": "sex",
+    "like": "sex",
+    "__v": 0,
+    "next": null,
+    "previous": "62af160f5e6d9cfb59fc0ffe"
+}
+Edit one Candidate by id (_id field from database) Api-------------------------------------------------
+patch: https://cosmos.starhunterent.com/api/candidate/edit/:id
+header
+Authorization: Authorization: token **access_token**
+request
+{
+    "ref_code": String,
+    "code": String (unique, required)",
+    "first_name_th": String (required),
+    "first_name_en": String (required),
+    "last_name_th": String (required),
+    "last_name_en": String (required),
+    "nick_name_th": String (required),
+    "nick_name_en": String (required),
+    "instagrame_acc": String (required),
+    "facebook_acc": String (required),
+    "candidate_status": "เข้ารอบ" or "ตกรอบแล้ว" (required)
+    "image_profile": file,
+    "image_1": file,
+    "image_2": file,
+    "image_3": file,
+    "image_4": file,
+    "date_of_birth":String,
+    "height": String,
+    "province": String,
+    "hobby": String,
+    "like": String,
+}
+response (example)
+{
+    "image_profile": {
+        "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/CMS22/no-image.png-1655643584602-10",
+        "key": "CMS22/no-image.png-1655643584602-10"
+    },
+    "images": {
+        "image_3": {
+            "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/CMS22/no-image.png-1655643584603-71",
+            "key": "CMS22/no-image.png-1655643584603-71"
+        }
+    },
+    "_id": "62a883cd988822a7f892fd69",
+    "code": "CMS22",
+    "first_name_th": "ภมิ33",
+    "last_name_th": "พัทพ3",
+    "first_name_en": "poom33",
+    "last_name_en": "pat33",
+    "nick_name_th": "โจ",
+    "nick_name_en": "โจ้",
+    "instagrame_acc": "jobad",
+    "facebook_acc": "joe",
+    "total_points": 0,
+    "candidate_status": "ตกรอบแล้ว",
+    "add_date": 1655210935478,
+    "__v": 0,
+    "date_of_birth": "2012-05-05T00:00:00.000Z",
+    "height": "150",
+    "province": "Bangkok",
+    "hobby": "sex",
+    "like": "sex"
+}
+
+Search Candidates by  code first_name_th first_name_en nick_name_th nick_name_en API------------------------------------------
+get: https://cosmos.starhunterent.com/api/candidate/search?q=
+response (example) q=test1
+[
+     {
+        "_id": "62af15e05e6d9cfb59fc0ffa",
+        "code": "TEST01",
+        "first_name_th": "ภมิ1",
+        "last_name_th": "พัทพ1",
+        "first_name_en": "poom1",
+        "last_name_en": "pat1",
+        "nick_name_th": "โจ",
+        "nick_name_en": "โจ้",
+        "instagrame_acc": "jobad",
+        "facebook_acc": "joe",
+        "total_points": 0,
+        "candidate_status": "ตกรอบแล้ว",
+        "add_date": 1655641512279,
+        "image_profile": {
+            "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/TEST01/no-image.png-1655641567976-44",
+            "key": "TEST01/no-image.png-1655641567976-44"
+        },
+        "date_of_birth": "2012-01-01",
+        "height": "150",
+        "province": "Bangkok",
+        "hobby": "sex",
+        "like": "sex",
+        "__v": 0,
+        "next": "62af16005e6d9cfb59fc0ffc",
+        "previous": null
+    }
+]
+
+Get Total points from all Candidates API------------------------------------------
+get: https://cosmos.starhunterent.com/api/candidate/total_points
+response (example)
+[
+    {
+        "_id": "62a4106cfb1ead707f0bf1b8",
+        "code": "CM-12",
+        "total_points": 0
+    },
+    {
+        "_id": "62a412cdfb1ead707f0bf1bb",
+        "code": "CM-13",
+        "total_points": 0
+    }
+]
+
+Get Total points from one Candidate by id (_id field from database) API------------------------------------------
+get: https://cosmos.starhunterent.com/api/candidate/total_points/:id
+response (example)
+{
+    "_id": "62a4ac7f826c8f37d9fe66df",
+    "code": "CM-2",
+    "total_points": 0
+}
+
+Update Total points for one Candidate by id (_id field from database) API------------------------------------------
+patch: https://cosmos.starhunterent.com/api/candidate/total_points/:id
+request (example)
+{
+    "total_points":100
+}
+response (example)
+{
+    "_id": "62a4ac7f826c8f37d9fe66df",
+    "code": "CM-2",
+    "total_points": 100 (Updated points)
+}
