@@ -31,4 +31,4 @@ const voteParameterSchema = new Schema({
 
 const VoterParameter = mongoose.model('VoterParameter', voteParameterSchema);
 
-module.exports = VoterParameter
+module.exports = VoterParameter;

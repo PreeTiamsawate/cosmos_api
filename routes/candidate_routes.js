@@ -6,7 +6,7 @@ const { authenticateToken } = require('../middleware');
 const multer = require("multer");
 const { storage, bucketName, s3Delete } = require('../utils/awsS3');
 
-const upload = multer({ storage })
+const upload = multer({ storage:storage })
 
 // router.get('/index', catchAsync(async (req, res, next) => {
 //     const { q, skip , limit} = req.query;   
@@ -171,7 +171,7 @@ router.delete('/delete/:id', authenticateToken, catchAsync(async (req, res, next
     const gone = await Candidate.findByIdAndDelete(id);
     res.json(gone);
 }));
-router.patch('/edit/:id'/*, authenticateToken*/, upload.fields([{
+router.patch('/edit/:id', authenticateToken, upload.fields([{
     name: 'image_profile', maxCount: 1
 }, {
     name: 'image_1', maxCount: 1

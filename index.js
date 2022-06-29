@@ -13,6 +13,8 @@ const catchAsync = require('./utils/catchAsync');;
 const userRoutes = require('./routes/user_routes');
 const candidateRoutes = require('./routes/candidate_routes');
 const VoterParameterRoutes = require('./routes/vote_parameter_route');
+const giftRoutes = require('./routes/gift_routes');
+const buyTokenRoutes = require('./routes/buy_token_routes');
 
 const DateOfBirth = require('./models/DateOfBirth');
 
@@ -67,6 +69,8 @@ app.get('/api/hello', catchAsync(async (req, res, next) => {
 app.use('/api/candidate', candidateRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/voteParameter', VoterParameterRoutes);
+app.use('/api/gift', giftRoutes);
+app.use('/api/buyToken', buyTokenRoutes);
 
 app.post('/api/adddate', catchAsync(async (req, res, next) => {
     const { date_of_birth,message } = req.body;

@@ -1,0 +1,80 @@
+Buy Token Api ========================================================
+
+Add Bonus Api-------------------------------------------------
+POST https://cosmos.starhunterent.com/api/buyToken/add
+content-type: application/json
+Authorization: token  **access_token**
+request
+{
+    "token": Number (Required),
+    "bonus": Number (Required)
+}
+response (example)
+{
+    "_id": "62bbba512bdf2fa4ba248fb3",
+    "token": 1000,
+    "bonus": 100,
+    "__v": 0
+}
+
+Get All Bonuses sorted by token Api-------------------------------------------------
+GET https://cosmos.starhunterent.com/api/buyToken/index
+response (example)
+[
+  {
+    "_id": "62bbba512bdf2fa4ba248fb3",
+    "token": 1000,
+    "bonus": 100,
+    "__v": 0
+  },
+  {
+    "_id": "62bbba5c2bdf2fa4ba248fbb",
+    "token": 3000,
+    "bonus": 300,
+    "__v": 0
+  },
+  {
+    "_id": "62bbba622bdf2fa4ba248fbf",
+    "token": 4000,
+    "bonus": 400,
+    "__v": 0
+  }
+]
+
+Get one Bonus by id (_id field from database) Api-------------------------------------------------
+GET https://cosmos.starhunterent.com/api/buyToken/show/:id
+response (example)
+{
+    "_id": "62bbba512bdf2fa4ba248fb3",
+    "token": 1000,
+    "bonus": 100,
+    "__v": 0
+}
+
+Edit one Bonus by id (_id field from database) Api-------------------------------------------------
+PATCH  https://cosmos.starhunterent.com/api/buyToken/edit/:id
+content-type: application/json
+Authorization: token **access_token**
+request
+{
+    "token": Number (Required),
+    "bonus": Number (Required)
+}
+response (example)
+{
+    "_id": "62bbba512bdf2fa4ba248fb3",
+    "token": 1000,
+    "bonus": 100,
+    "__v": 0
+}
+
+Delete one Bonus by id (_id field from database) Api-------------------------------------------------
+DELETE  https://cosmos.starhunterent.com/api/buyToken/delete/62bbba562bdf2fa4ba248fb7
+Authorization: token **access_token**
+response (example)
+{
+    "_id": "62bbba512bdf2fa4ba248fb3",
+    "token": 1000,
+    "bonus": 100,
+    "__v": 0
+}

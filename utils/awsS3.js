@@ -24,6 +24,19 @@ const storage= multerS3({
     },
     contentType: multerS3.AUTO_CONTENT_TYPE,
 })
+const giftStorage= multerS3({
+    s3: s3,
+    bucket: bucketName,
+    metadata: function (req, file, cb) {
+        cb(null, { fieldName: file.fieldname });
+    },
+    key: function (req, file, cb) {
+        const s3FileName = `${file.originalname}-${Date.now().toString()}-${Math.floor(Math.random() * 90 + 10).toString()}`;
+        // const folder = "Gifts";
+        cb(null,`Gift/${s3FileName}`);
+    },
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+})
 const s3Delete=function(bucketName, key){
     s3.deleteObject({  Bucket: bucketName, Key: key }, function(err, data) {
         if (err){// error
@@ -37,6 +50,7 @@ const s3Delete=function(bucketName, key){
 module.exports = {
     s3,
     storage,
+    giftStorage,
     bucketName,
     s3Delete
 }

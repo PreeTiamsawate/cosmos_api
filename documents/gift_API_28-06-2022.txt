@@ -1,0 +1,103 @@
+Gift Api ========================================================
+
+Add Gift Api-------------------------------------------------
+POST: https://cosmos.starhunterent.com/api/gift/add
+header
+Content-Type: multipart/form-data
+Authorization: token **access_token**
+request
+{
+    "name": String (Required),
+    "token": Number (Required),
+    "image": File,
+}
+response (example)
+{
+    "name": "Test Gift 1",
+    "token": 100,
+    "image": {
+        "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/Gift/fishing-icon.png-1656401225963-92",
+        "key": "Gift/fishing-icon.png-1656401225963-92"
+    },
+    "_id": "62baad4a97ec855573f1747c",
+    "__v": 0
+}
+
+Get All Gift sorted by token Api-------------------------------------------------
+GET https://cosmos.starhunterent.com/api/gift/index
+response (example)
+[
+    {
+        "image": {
+            "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/Gift/fishing-icon.png-1656401225963-92",
+            "key": "Gift/fishing-icon.png-1656401225963-92"
+        },
+        "_id": "62baad4a97ec855573f1747c",
+        "name": "Test Gift 1",
+        "token": 100,
+        "__v": 0
+    },
+    {
+        "image": {
+            "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/Gift/bitnami.ico-1656400905584-28",
+            "key": "Gift/bitnami.ico-1656400905584-28"
+        },
+        "_id": "62baac0a97ec855573f17462",
+        "name": "Test Gift 2",
+        "token": 200,
+        "__v": 0
+    }
+]
+
+Get one Gift by id (_id field from database) Api-------------------------------------------------
+GET https://cosmos.starhunterent.com/api/gift/show/:id
+response (example)
+{
+    "image": {
+        "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/Gift/fishing-icon.png-1656401225963-92",
+        "key": "Gift/fishing-icon.png-1656401225963-92"
+    },
+    "_id": "62baad4a97ec855573f1747c",
+    "name": "Test Gift 1",
+    "token": 100,
+    "__v": 0
+}
+
+Edit one Gift by id (_id field from database) Api-------------------------------------------------
+PATCH https://cosmos.starhunterent.com/api/gift/edit/:id
+header
+Content-Type: multipart/form-data
+Authorization: token **access_token**
+request
+{
+    "name": String (Required),
+    "token": Number (Required),
+    "image": File,
+}
+response (example)
+{
+    "image": {
+        "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/Gift/sport-icon.png-1656401872769-77",
+        "key": "Gift/sport-icon.png-1656401872769-77"
+    },
+    "_id": "62baad4a97ec855573f1747c",
+    "name": "Test Gift 4",
+    "token": 400,
+    "__v": 0
+}
+
+Delete one Gift by id (_id field from database) Api-------------------------------------------------
+DELETE https://cosmos.starhunterent.com/api/gift/delete/:id
+header
+Authorization: token **access_token**
+response (example)
+{
+    "image": {
+        "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/Gift/sport-icon.png-1656401872769-77",
+        "key": "Gift/sport-icon.png-1656401872769-77"
+    },
+    "_id": "62baad4a97ec855573f1747c",
+    "name": "Test Gift 4",
+    "token": 400,
+    "__v": 0
+}
