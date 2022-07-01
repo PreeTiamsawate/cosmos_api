@@ -369,3 +369,124 @@ response (example)
     "code": "CM-2",
     "total_points": 100 (Updated points)
 }
+
+Get top five candidates by total points API------------------------------------------
+GET https://cosmos.starhunterent.com/api/candidate/topfive
+response (example)
+[
+  {
+    "_id": "62be54b1eeaa082c3804f6ea",
+    "code": "SC4",
+    "first_name_th": "ปลา",
+    "last_name_th": "แกะ",
+    "first_name_en": "poom33",
+    "last_name_en": "pat33",
+    "nick_name_th": "โจ",
+    "nick_name_en": "โจ้",
+    "instagrame_acc": "jobad",
+    "facebook_acc": "joe",
+    "total_points": 500,
+    "candidate_status": "ตกรอบแล้ว",
+    "add_date": 1656640167687,
+    "date_of_birth": "2012-05-05T00:00:00.000Z",
+    "height": "150",
+    "province": "Bangkok",
+    "hobby": "sex",
+    "like": "sex",
+    "__v": 0
+  },
+  {
+    "_id": "62be5476eeaa082c3804f6e2",
+    "code": "SC2",
+    "first_name_th": "ไก่",
+    "last_name_th": "โต้ง",
+    "first_name_en": "poom33",
+    "last_name_en": "pat33",
+    "nick_name_th": "โจ",
+    "nick_name_en": "โจ้",
+    "instagrame_acc": "jobad",
+    "facebook_acc": "joe",
+    "total_points": 300,
+    "candidate_status": "ตกรอบแล้ว",
+    "add_date": 1656640167687,
+    "date_of_birth": "2012-05-05T00:00:00.000Z",
+    "height": "150",
+    "province": "Bangkok",
+    "hobby": "sex",
+    "like": "sex",
+    "__v": 0
+  },
+  {
+    "_id": "62be548aeeaa082c3804f6e6",
+    "code": "SC3",
+    "first_name_th": "แมว",
+    "last_name_th": "เหมียว",
+    "first_name_en": "poom33",
+    "last_name_en": "pat33",
+    "nick_name_th": "โจ",
+    "nick_name_en": "โจ้",
+    "instagrame_acc": "jobad",
+    "facebook_acc": "joe",
+    "total_points": 200,
+    "candidate_status": "ตกรอบแล้ว",
+    "add_date": 1656640167687,
+    "date_of_birth": "2012-05-05T00:00:00.000Z",
+    "height": "150",
+    "province": "Bangkok",
+    "hobby": "sex",
+    "like": "sex",
+    "__v": 0
+  },
+  {
+    "image_profile": {
+      "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/CMS22/no-image.png-1655643584602-10",
+      "key": "CMS22/no-image.png-1655643584602-10"
+    },
+    "images": {
+      "image_3": {
+        "url": "https://cosmos-girl-images.s3.ap-southeast-1.amazonaws.com/CMS22/no-image.png-1655643584603-71",
+        "key": "CMS22/no-image.png-1655643584603-71"
+      }
+    },
+    "_id": "62a883cd988822a7f892fd69",
+    "code": "CMS22",
+    "first_name_th": "ภมิ33",
+    "last_name_th": "พัทพ3",
+    "first_name_en": "poom33",
+    "last_name_en": "pat33",
+    "nick_name_th": "โจ",
+    "nick_name_en": "โจ้",
+    "instagrame_acc": "jobad",
+    "facebook_acc": "joe",
+    "total_points": 200,
+    "candidate_status": "ตกรอบแล้ว",
+    "add_date": 1655210935478,
+    "__v": 0,
+    "date_of_birth": "2012-05-05T00:00:00.000Z",
+    "height": "150",
+    "hobby": "sex",
+    "like": "sex",
+    "province": "Bangkok"
+  },
+  {
+    "_id": "62be5462eeaa082c3804f6de",
+    "code": "SC1",
+    "first_name_th": "ปรี",
+    "last_name_th": "เทียม",
+    "first_name_en": "poom33",
+    "last_name_en": "pat33",
+    "nick_name_th": "โจ",
+    "nick_name_en": "โจ้",
+    "instagrame_acc": "jobad",
+    "facebook_acc": "joe",
+    "total_points": 100,
+    "candidate_status": "ตกรอบแล้ว",
+    "add_date": 1656640167687,
+    "date_of_birth": "2012-05-05T00:00:00.000Z",
+    "height": "150",
+    "province": "Bangkok",
+    "hobby": "sex",
+    "like": "sex",
+    "__v": 0
+  }
+]

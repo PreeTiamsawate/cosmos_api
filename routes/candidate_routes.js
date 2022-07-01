@@ -289,12 +289,17 @@ router.get('/total_points/:id', catchAsync(async (req, res, next) => {
 router.patch('/total_points/:id', catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const {total_points} = req.body;
+    console.log(total_points)
     const newTotalPointsById = await Candidate.findByIdAndUpdate(id,
         {total_points:total_points},
         {returnOriginal: false}
         ).select('code total_points');
     res.json(newTotalPointsById);
 }));
+router.get('/topfive',catchAsync(async (req, res, next) => {
+    const topFiveCandidates = await Candidate.find({}).sort({total_points:-1}).limit(5);
+    res.json(topFiveCandidates);
 
+}))
 
 module.exports = router;
