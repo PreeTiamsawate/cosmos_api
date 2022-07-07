@@ -1,0 +1,97 @@
+GET http://localhost:3030/api/candidate/index?q=SC&skip=&limit= 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzM2OWJjODk5NGQ1MDZhZmU0YWIiLCJpYXQiOjE2NTUyMTA0ODEsImV4cCI6MTY1NTIyMDQ4MX0.WPe5eGevT6QsGqAJosjFmtw-biGMMQOCcFaaXiycwKE 
+
+###
+PATCH  http://localhost:3030/api/candidate/total_points/62be54b1eeaa082c3804f6ea
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzM2OWJjODk5NGQ1MDZhZmU0YWIiLCJpYXQiOjE2NTY2NDA0NDcsImV4cCI6MTY1NjY1MDQ0N30.MZkDIn2huh156haZviJrhNlWjv26EqjRqBYJnALwiQM
+
+{
+    "total_points":500
+}
+###
+GET http://localhost:3030/api/candidate/topfive
+
+###
+GET http://localhost:3000/api/user/testMiddleWare
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzM2OWJjODk5NGQ1MDZhZmU0YWIiLCJpYXQiOjE2NTUyMTA0ODEsImV4cCI6MTY1NTIyMDQ4MX0.WPe5eGevT6QsGqAJosjFmtw-biGMMQOCcFaaXiycwKE
+###
+
+GET http://34.208.100.26/api/user/getUserDetailByToken
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzQzOGZkYTEwZDgzMjlhOGM3MTAiLCJpYXQiOjE2NTUyMDMzMzUsImV4cCI6MTY1NTIxMzMzNX0.7YT8ZK994J60ALVlygTBNWtIesf_D07rf73SzRwU2I4
+
+###
+
+POST https://cosmos.starhunterent.com/api/voteParameter/seed
+content-type: application/json
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzQzOGZkYTEwZDgzMjlhOGM3MTAiLCJpYXQiOjE2NTYyMzUyNDYsImV4cCI6MTY1NjI0NTI0Nn0.dnvvdbA4kdgLsIjHmqvpXrnABnc1DKNrAqNJ14WCnI0
+
+{
+    "isVoteOn": false,
+    "cash": 2,
+    "token1": 100,
+    "token2": 1,
+    "point" : 10
+}
+
+###
+GET https://cosmos.starhunterent.com/https://cosmos.starhunterent.com/api/voteParameter/getVoteParams
+
+###
+PATCH  https://cosmos.starhunterent.com/api/voteParameter/setVoteON
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzQzOGZkYTEwZDgzMjlhOGM3MTAiLCJpYXQiOjE2NTYzMjc4NzcsImV4cCI6MTY1NjMzNzg3N30.2Ex2oMSqZYD4B_suzJ-ruUXMNIZp9BLM79vb89HZad8
+###
+PATCH  https://cosmos.starhunterent.com/api/voteParameter/setVoteOFF
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzQzOGZkYTEwZDgzMjlhOGM3MTAiLCJpYXQiOjE2NTYzMjc4NzcsImV4cCI6MTY1NjMzNzg3N30.2Ex2oMSqZYD4B_suzJ-ruUXMNIZp9BLM79vb89HZad8
+###
+
+GET https://cosmos.starhunterent.com/api/voteParameter/isVoteON
+###
+
+PATCH https://cosmos.starhunterent.com/api/voteParameter/setConversionRates
+content-type: application/json
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzQzOGZkYTEwZDgzMjlhOGM3MTAiLCJpYXQiOjE2NTYzMjc4NzcsImV4cCI6MTY1NjMzNzg3N30.2Ex2oMSqZYD4B_suzJ-ruUXMNIZp9BLM79vb89HZad8
+
+{
+    "cash": 300000,
+    "token1": 500,
+    "token2": 1,
+    "point" : 150
+}
+###
+
+POST https://cosmos.starhunterent.com/api/user/login 
+content-type: application/json
+
+{
+    "username": "pree",
+    "password": "1234"
+}
+###
+
+
+POST https://cosmos.starhunterent.com/api/buyToken/add
+content-type: application/json
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjllMjAxY2Y4MDhmMDhkNjBiYzllY2QiLCJpYXQiOjE2NTY0NzAwMTIsImV4cCI6MTY1NjQ4MDAxMn0.jk0KKAV_846yMfFR-TuWM1Wz4pcr51UVxvFdrC-yUwo
+
+{
+    "token": 4000,
+    "bonus": 400
+}
+###
+GET https://cosmos.starhunterent.com/api/buyToken/index
+###
+GET https://cosmos.starhunterent.com/api/buyToken/show/62bbba562bdf2fa4ba248fb7
+###
+PATCH  https://cosmos.starhunterent.com/api/buyToken/edit/62bbba562bdf2fa4ba248fb7
+content-type: application/json
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjllMjAxY2Y4MDhmMDhkNjBiYzllY2QiLCJpYXQiOjE2NTY0NzAwMTIsImV4cCI6MTY1NjQ4MDAxMn0.jk0KKAV_846yMfFR-TuWM1Wz4pcr51UVxvFdrC-yUwo
+
+{
+    "token": 2100,
+    "bonus": 200
+}
+
+###
+DELETE  https://cosmos.starhunterent.com/api/buyToken/delete/62bbba562bdf2fa4ba248fb7
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjllMjAxY2Y4MDhmMDhkNjBiYzllY2QiLCJpYXQiOjE2NTY0NzAwMTIsImV4cCI6MTY1NjQ4MDAxMn0.jk0KKAV_846yMfFR-TuWM1Wz4pcr51UVxvFdrC-yUwo
