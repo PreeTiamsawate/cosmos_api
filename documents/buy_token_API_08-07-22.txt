@@ -11,10 +11,11 @@ request
 }
 response (example)
 {
-    "_id": "62bbba512bdf2fa4ba248fb3",
-    "token": 1000,
-    "bonus": 100,
-    "__v": 0
+  "token": 4000,
+  "bonus": 400,
+  "priceBaht": 36000,
+  "_id": "62c7f810198824c5325b1d41",
+  "__v": 0
 }
 
 Get All Bonuses sorted by token Api-------------------------------------------------
@@ -22,33 +23,36 @@ GET https://cosmos.starhunterent.com/api/buyToken/index
 response (example)
 [
   {
-    "_id": "62bbba512bdf2fa4ba248fb3",
-    "token": 1000,
-    "bonus": 100,
-    "__v": 0
-  },
-  {
     "_id": "62bbba5c2bdf2fa4ba248fbb",
-    "token": 3000,
-    "bonus": 300,
-    "__v": 0
+    "token": 1300,
+    "bonus": 1,
+    "__v": 0,
+    "priceBaht": 12871
   },
   {
     "_id": "62bbba622bdf2fa4ba248fbf",
+    "token": 3000,
+    "bonus": 300,
+    "__v": 0,
+    "priceBaht": 29702
+  },
+  {
+    "_id": "62bbba512bdf2fa4ba248fb3",
     "token": 4000,
     "bonus": 400,
-    "__v": 0
+    "__v": 0,
+    "priceBaht": 39603
   }
 ]
-
 Get one Bonus by id (_id field from database) Api-------------------------------------------------
 GET https://cosmos.starhunterent.com/api/buyToken/show/:id
 response (example)
 {
-    "_id": "62bbba512bdf2fa4ba248fb3",
-    "token": 1000,
-    "bonus": 100,
-    "__v": 0
+  "_id": "62c7ef3d08503e685a0c602f",
+  "token": 1200,
+  "bonus": 20,
+  "priceBaht": 10800,
+  "__v": 0
 }
 
 Edit one Bonus by id (_id field from database) Api-------------------------------------------------
@@ -62,19 +66,26 @@ request
 }
 response (example)
 {
-    "_id": "62bbba512bdf2fa4ba248fb3",
-    "token": 1000,
-    "bonus": 100,
-    "__v": 0
+  "_id": "62c7ef3d08503e685a0c602f",
+  "token": 1200,
+  "bonus": 20,
+  "priceBaht": 10800,
+  "__v": 0
 }
 
 Delete one Bonus by id (_id field from database) Api-------------------------------------------------
-DELETE  https://cosmos.starhunterent.com/api/buyToken/delete/62bbba562bdf2fa4ba248fb7
+DELETE  https://cosmos.starhunterent.com/api/buyToken/delete/:id
 Authorization: token **access_token**
 response (example)
 {
-    "_id": "62bbba512bdf2fa4ba248fb3",
-    "token": 1000,
-    "bonus": 100,
-    "__v": 0
+  "_id": "62c7ef3d08503e685a0c602f",
+  "token": 1200,
+  "bonus": 20,
+  "priceBaht": 10800,
+  "__v": 0
 }
+
+Get total tokens (token + bonus) by id (_id field from database) Api-------------------------------------------------
+GET http://localhost:3030/api/buyToken/totalTokens/:id
+response (example)
+1220

@@ -5,12 +5,14 @@ GET https://cosmos.starhunterent.com/api/voteParameter/getVoteParams
 response (example)
 {
   "_id": "62b82541f86481649f9772bd",
-  "isVoteOn": false,
-  "cash": 2,
-  "token1": 500,
-  "token2": 1,
-  "point": 150,
-  "__v": 0
+  "isVoteOn": true,
+  "cash": 1000,
+  "token1": 101,
+  "token2": 10,
+  "point": 50,
+  "__v": 0,
+  "cashByToken": 9.900990099009901,
+  "pointByToken": 5
 }
 
 Get ON/OFF Status (isVoteOn) ----------------------------------------------------------
@@ -34,20 +36,22 @@ Set Cash/Token?Point Conversion Rate -------------------------------------------
 PATCH https://cosmos.starhunterent.com/api/voteParameter/setConversionRates
 content-type: application/json
 Authorization: token **access_token**
-request (example)
+request 
 {
-    "cash": 2,
-    "token1": 500,
-    "token2": 1,
-    "point" : 150
+    "cash": Number (required),
+    "token1": Number (required),
+    "token2": Number (required),
+    "point" : Number (required)
 }
 response (example)
 {
-  "_id": "62b82541f86481649f9772bd",
+  "_id": "62c7e74df4dd4640e208f0d4",
   "isVoteOn": false,
-  "cash": 2,
-  "token1": 500,
-  "token2": 1,
+  "cash": 9,
+  "token1": 1,
+  "token2": 30,
   "point": 150,
-  "__v": 0
+  "__v": 0,
+  "cashByToken": 9,
+  "pointByToken": 5
 }

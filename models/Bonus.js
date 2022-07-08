@@ -12,6 +12,9 @@ const bonusSchema = new Schema({
         type:Number,
         required: [true, 'กรุณากรอก Bonus'],
         default: 0
+    },
+    priceBaht:{
+        type:Number
     }
 });
 

@@ -17,25 +17,25 @@ GET http://localhost:3000/api/user/testMiddleWare
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzM2OWJjODk5NGQ1MDZhZmU0YWIiLCJpYXQiOjE2NTUyMTA0ODEsImV4cCI6MTY1NTIyMDQ4MX0.WPe5eGevT6QsGqAJosjFmtw-biGMMQOCcFaaXiycwKE
 ###
 
-GET http://34.208.100.26/api/user/getUserDetailByToken
+GET https://cosmos.starhunterent.com/api/voteParameter/getVoteParams
 Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzQzOGZkYTEwZDgzMjlhOGM3MTAiLCJpYXQiOjE2NTUyMDMzMzUsImV4cCI6MTY1NTIxMzMzNX0.7YT8ZK994J60ALVlygTBNWtIesf_D07rf73SzRwU2I4
 
 ###
 
-POST https://cosmos.starhunterent.com/api/voteParameter/seed
+POST http://localhost:3030/api/voteParameter/seed
 content-type: application/json
-Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzQzOGZkYTEwZDgzMjlhOGM3MTAiLCJpYXQiOjE2NTYyMzUyNDYsImV4cCI6MTY1NjI0NTI0Nn0.dnvvdbA4kdgLsIjHmqvpXrnABnc1DKNrAqNJ14WCnI0
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM3ZDYxYWY3MTllMTIzYTZlOWFhNTQiLCJpYXQiOjE2NTcyNjgwMTYsImV4cCI6MTY1NzI3ODAxNn0.kJqk1p_7I5a1jlgYIfAUgCQNHr45ktp9CT6v0zwdFBU
 
 {
     "isVoteOn": false,
-    "cash": 2,
-    "token1": 100,
-    "token2": 1,
-    "point" : 10
+    "cash": 1000,
+    "token1": 101,
+    "token2": 10,
+    "point" : 50
 }
 
 ###
-GET https://cosmos.starhunterent.com/https://cosmos.starhunterent.com/api/voteParameter/getVoteParams
+GET https://cosmos.starhunterent.com/api/voteParameter/getVoteParams
 
 ###
 PATCH  https://cosmos.starhunterent.com/api/voteParameter/setVoteON
@@ -48,19 +48,19 @@ Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNz
 GET https://cosmos.starhunterent.com/api/voteParameter/isVoteON
 ###
 
-PATCH https://cosmos.starhunterent.com/api/voteParameter/setConversionRates
+PATCH http://localhost:3030/api/voteParameter/setConversionRates
 content-type: application/json
-Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzQzOGZkYTEwZDgzMjlhOGM3MTAiLCJpYXQiOjE2NTYzMjc4NzcsImV4cCI6MTY1NjMzNzg3N30.2Ex2oMSqZYD4B_suzJ-ruUXMNIZp9BLM79vb89HZad8
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM3ZDYxYWY3MTllMTIzYTZlOWFhNTQiLCJpYXQiOjE2NTcyNjgwMTYsImV4cCI6MTY1NzI3ODAxNn0.kJqk1p_7I5a1jlgYIfAUgCQNHr45ktp9CT6v0zwdFBU
 
 {
-    "cash": 300000,
-    "token1": 500,
-    "token2": 1,
+    "cash": 9,
+    "token1": 1,
+    "token2": 30,
     "point" : 150
 }
 ###
 
-POST https://cosmos.starhunterent.com/api/user/login 
+POST http://localhost:3030/api/user/login
 content-type: application/json
 
 {
@@ -70,9 +70,9 @@ content-type: application/json
 ###
 
 
-POST https://cosmos.starhunterent.com/api/buyToken/add
+POST http://localhost:3030/api/buyToken/add
 content-type: application/json
-Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjllMjAxY2Y4MDhmMDhkNjBiYzllY2QiLCJpYXQiOjE2NTY0NzAwMTIsImV4cCI6MTY1NjQ4MDAxMn0.jk0KKAV_846yMfFR-TuWM1Wz4pcr51UVxvFdrC-yUwo
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM3ZDYxYWY3MTllMTIzYTZlOWFhNTQiLCJpYXQiOjE2NTcyNjgwMTYsImV4cCI6MTY1NzI3ODAxNn0.kJqk1p_7I5a1jlgYIfAUgCQNHr45ktp9CT6v0zwdFBU
 
 {
     "token": 4000,
@@ -81,17 +81,19 @@ Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjllMj
 ###
 GET https://cosmos.starhunterent.com/api/buyToken/index
 ###
-GET https://cosmos.starhunterent.com/api/buyToken/show/62bbba562bdf2fa4ba248fb7
+GET http://localhost:3030/api/buyToken/show/62c7ef3d08503e685a0c602f
 ###
-PATCH  https://cosmos.starhunterent.com/api/buyToken/edit/62bbba562bdf2fa4ba248fb7
+PATCH  http://localhost:3030/api/buyToken/edit/62c7ef3d08503e685a0c602f
 content-type: application/json
-Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjllMjAxY2Y4MDhmMDhkNjBiYzllY2QiLCJpYXQiOjE2NTY0NzAwMTIsImV4cCI6MTY1NjQ4MDAxMn0.jk0KKAV_846yMfFR-TuWM1Wz4pcr51UVxvFdrC-yUwo
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM3ZDYxYWY3MTllMTIzYTZlOWFhNTQiLCJpYXQiOjE2NTcyNjgwMTYsImV4cCI6MTY1NzI3ODAxNn0.kJqk1p_7I5a1jlgYIfAUgCQNHr45ktp9CT6v0zwdFBU
 
 {
-    "token": 2100,
-    "bonus": 200
+    "token": 1200,
+    "bonus": 20
 }
 
 ###
 DELETE  https://cosmos.starhunterent.com/api/buyToken/delete/62bbba562bdf2fa4ba248fb7
 Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjllMjAxY2Y4MDhmMDhkNjBiYzllY2QiLCJpYXQiOjE2NTY0NzAwMTIsImV4cCI6MTY1NjQ4MDAxMn0.jk0KKAV_846yMfFR-TuWM1Wz4pcr51UVxvFdrC-yUwo
+###
+GET http://localhost:3030/api/buyToken/totalTokens/62c7ef3d08503e685a0c602f

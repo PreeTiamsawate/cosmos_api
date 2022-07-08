@@ -34,12 +34,16 @@ router.get('/isVoteON',catchAsync(async(req,res,next)=>{
 
 router.patch('/setConversionRates', authenticateToken, catchAsync(async(req,res,next)=>{
     const {cash, token1, token2, point} = req.body;
+    let cashByToken = cash/token1;
+    let pointByToken = point/token2;
     const voteConversionRates = await VoterParameter.findOneAndUpdate(
         {},{
             cash:cash,
             token1:token1,
             token2:token2,
-            point:point       
+            point:point,
+            cashByToken:cashByToken,
+            pointByToken:pointByToken      
         },{new:true});
     res.json(voteConversionRates);    
 }))

@@ -26,6 +26,12 @@ const voteParameterSchema = new Schema({
         type:Number,
         required: [true, 'กรุณากรอก Point'],
         default: 1
+    },
+    cashByToken:{
+        type:Number
+    },
+    pointByToken:{
+        type:Number
     }
 });
 
