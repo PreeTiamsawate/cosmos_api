@@ -76,7 +76,7 @@ router.post('/add',authenticateToken, upload.fields([{
     name: 'image_4', maxCount: 1
 },
 ]), catchAsync(async (req, res, next) => {
-    const { ref_code, code, first_name_th, last_name_th, first_name_en, last_name_en, nick_name_th, nick_name_en, instagrame_acc, facebook_acc, candidate_status } = req.body;
+    // const { ref_code, code, first_name_th, last_name_th, first_name_en, last_name_en, nick_name_th, nick_name_en, instagrame_acc, facebook_acc, candidate_status } = req.body;
     const { image_profile, image_1, image_2, image_3, image_4 } = req.files;
     const candidate = new Candidate(req.body);
     if (image_profile) {

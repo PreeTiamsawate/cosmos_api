@@ -97,3 +97,20 @@ DELETE  https://cosmos.starhunterent.com/api/buyToken/delete/62bbba562bdf2fa4ba2
 Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjllMjAxY2Y4MDhmMDhkNjBiYzllY2QiLCJpYXQiOjE2NTY0NzAwMTIsImV4cCI6MTY1NjQ4MDAxMn0.jk0KKAV_846yMfFR-TuWM1Wz4pcr51UVxvFdrC-yUwo
 ###
 GET http://localhost:3030/api/buyToken/totalTokens/62c7ef3d08503e685a0c602f
+
+###
+POST http://localhost:3030/api/sentGiftHistory/sendAndRecord
+content-type: application/json
+
+{
+    "user_id": "id-u-0",
+    "candidate_id": "id-c-0",
+    "gift_id": "id-g-0",
+    "send_date_time" : "2022-07-24T12:10:00+07:00",
+    "token": 100,
+    "price":200
+}
+
+###
+
+GET http://localhost:3030/api/sentGiftHistory/index

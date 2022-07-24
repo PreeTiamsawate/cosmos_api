@@ -15,6 +15,7 @@ const candidateRoutes = require('./routes/candidate_routes');
 const VoterParameterRoutes = require('./routes/vote_parameter_route');
 const giftRoutes = require('./routes/gift_routes');
 const buyTokenRoutes = require('./routes/buy_token_routes');
+const sentGiftHistory = require('./routes/sent_gift_history_routes');
 
 const DateOfBirth = require('./models/DateOfBirth');
 
@@ -64,13 +65,14 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.get('/api/hello', catchAsync(async (req, res, next) => {
-    res.send("Hello 6");
+    res.send("Hello 19Jul2022");
 }));
 app.use('/api/candidate', candidateRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/voteParameter', VoterParameterRoutes);
 app.use('/api/gift', giftRoutes);
 app.use('/api/buyToken', buyTokenRoutes);
+app.use('/api/sentGiftHistory', sentGiftHistory);
 
 app.post('/api/adddate', catchAsync(async (req, res, next) => {
     const { date_of_birth,message } = req.body;
