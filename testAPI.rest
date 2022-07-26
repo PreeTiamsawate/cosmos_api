@@ -50,11 +50,11 @@ GET https://cosmos.starhunterent.com/api/voteParameter/isVoteON
 
 PATCH http://localhost:3030/api/voteParameter/setConversionRates
 content-type: application/json
-Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM3ZDYxYWY3MTllMTIzYTZlOWFhNTQiLCJpYXQiOjE2NTcyNjgwMTYsImV4cCI6MTY1NzI3ODAxNn0.kJqk1p_7I5a1jlgYIfAUgCQNHr45ktp9CT6v0zwdFBU
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM3ZDYxYWY3MTllMTIzYTZlOWFhNTQiLCJpYXQiOjE2NTc1MTk0MTgsImV4cCI6MTY1NzUyOTQxOH0.dWEY-4hcfWEpXidUgO0UBiZzplw95V4Yz-5lCVl7tjY
 
 {
-    "cash": 9,
-    "token1": 1,
+    "cash": 1,
+    "token1": 12,
     "token2": 30,
     "point" : 150
 }
