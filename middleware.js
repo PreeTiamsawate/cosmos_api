@@ -1,5 +1,7 @@
 const User = require('./models/User');
 const jwt = require('jsonwebtoken');
+const ExpressError = require('./utils/ExpressError');
+const Joi = require('joi');
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
         return res.send('Please login first.')
@@ -21,5 +23,26 @@ module.exports.authenticateToken= (req, res, next)=>{
         console.log("Valid Token");
         next()
       });
+}
+
+module.exports.validateSentGift = (req, res, next)=>{
+    const sentGiftSchema = Joi.object({
+        user_id: Joi.string().required(),
+        username: Joi.string().required(),
+        email: Joi.string().required(), 
+        candidate_id: Joi.string().required(), 
+        gift_id: Joi.string().required(), 
+        send_date_time: Joi.string().required(), 
+        token: Joi.number().required().min(0),
+        price:Joi.number().required().min(0)
+    })
+    const {error} = sentGiftSchema.validate(req.body);
+    if(error){
+        const msg = error.details.map(el => el.message).join(',');
+        throw new ExpressError(msg,400);     
+    }else{
+        next();
+    }
+
 }
 

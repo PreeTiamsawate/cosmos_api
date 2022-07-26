@@ -1,0 +1,56 @@
+Sent Gift Api ======================================================
+
+Reord and Send Sent Gift Activity Api -----------------------------
+post: https://cosmos.starhunterent.com/api/sentGiftHistory/sendAndRecord
+header
+content-type: application/json
+request
+{
+    "user_id": String (Required),
+    "candidate_id": String (Required),
+    "gift_id": String (Required),
+    "send_date_time" : String (Required) ex"2022-07-24T12:10:00+07:00",
+    "token": Number (Required) ,
+    "price":Number (Required) ,
+    "username": String (Required),
+    "email": String (Required),
+}
+response (example)
+Vote data sent and saved
+OR
+Vote data sent and not saved
+
+
+Get All Sent Gift Record Api -----------------------------  
+get: https://cosmos.starhunterent.com/api/sentGiftHistory/index 
+response (example)
+[
+  {
+    "_id": "62dfb1fd0fb4b1474928c30d",
+    "user_id": "62c6cf4f0771b93cb29f1e20",
+    "username": "username225",
+    "email": "preetiam@gmail.com",
+    "candidate_id": "62a6a78bff9c10499b2145f4",
+    "gift_id": "id-g-0",
+    "send_date_time": "2022-07-24T05:10:00.000Z",
+    "token": 100,
+    "price": 200,
+    "point": 500,
+    "__v": 0
+  },
+{
+    "_id": "62dfb1fd0fb2341474928c30d",
+    "user_id": "62c6cf4f0771b93cb29f1e20",
+    "username": "username225",
+    "email": "preetiam@gmail.com",
+    "candidate_id": "62a6a78bff9c10499b2145f4",
+    "gift_id": "id-g-0",
+    "send_date_time": "2022-07-24T05:10:00.000Z",
+    "token": 100,
+    "price": 200,
+    "point": 500,
+    "__v": 0
+  }
+]
+
+ 

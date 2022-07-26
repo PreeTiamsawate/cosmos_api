@@ -6,6 +6,14 @@ const sentGiftHistorySchema = new Schema({
         type: String,
         required:[true, 'user_id required'],
     },
+    username:{
+        type: String,
+        required:[true, 'username required'],
+    },
+    email:{
+        type: String,
+        required:[true, 'email required'],
+    },
     candidate_id:{
         type: String,
         required:[true, 'candidate_id required'],
@@ -25,7 +33,11 @@ const sentGiftHistorySchema = new Schema({
     price:{
         type:Number,
         required:[true, 'price required'],
-    }
+    },
+    point:{
+        type:Number,
+        required:[true, 'price required'],
+    },
 })
 
 const SentGiftHistory = mongoose.model('SentGiftHistory', sentGiftHistorySchema);
