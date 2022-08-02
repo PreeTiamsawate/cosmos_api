@@ -1,4 +1,4 @@
-GET http://localhost:3030/api/candidate/index?q=SC&skip=&limit= 
+GET http://localhost:3030/api/candidate/index?q=&skip=&limit= 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzM2OWJjODk5NGQ1MDZhZmU0YWIiLCJpYXQiOjE2NTUyMTA0ODEsImV4cCI6MTY1NTIyMDQ4MX0.WPe5eGevT6QsGqAJosjFmtw-biGMMQOCcFaaXiycwKE 
 
 ###
@@ -99,16 +99,15 @@ Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjllMj
 GET http://localhost:3030/api/buyToken/totalTokens/62c7ef3d08503e685a0c602f
 
 ###
-POST https://cosmos.starhunterent.com/api/sentGiftHistory/sendAndRecord
+POST http://localhost:3030/api/sentGiftHistory/sendAndRecord
 content-type: application/json
 
 {
     "user_id": "62c6cf4f0771b93cb29f1e20",
-    "candidate_id": "62a6a78bff9c10499b2145f4",
-    "gift_id": "id-g-0",
+    "candidate_id": "62aee84fd5f39f3f669263d0",
+    "gift_id": "id-g-3",
     "send_date_time" : "2022-07-24T12:10:00+07:00",
     "token": 100,
-    "price":200,
     "username": "username225",
     "email": "preetiam@gmail.com"
 }

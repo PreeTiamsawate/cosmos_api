@@ -6,16 +6,17 @@ const catchAsync = require('../utils/catchAsync');
 const { validateSentGift } = require('../middleware');
 const SentGiftHistory = require('../models/SentGiftHistory');
 const VoteParameter = require('../models/VoteParameter');
+const Candidate = require('../models/Candidate');
 
 router.post('/sendAndRecord', validateSentGift ,catchAsync(async (req, res, next) => {
     
-    const { user_id, username, email, candidate_id, gift_id, send_date_time, token, price } = req.body;
+    const { user_id, username, email, candidate_id, gift_id, send_date_time, token } = req.body;
     const voteParameters = await VoteParameter.findOne({});
 
     const pointByToken = voteParameters.pointByToken;
     const point = token * pointByToken;
     const sentGiftHistory = new SentGiftHistory({
-        user_id, username, email, candidate_id, gift_id, send_date_time, token, price, point
+        user_id, username, email, candidate_id, gift_id, send_date_time, token, point
     });
 
     const url = 'https://vote.cosmos.starhunterent.com/clientapi/UpdateVoteLog';
@@ -35,6 +36,11 @@ router.post('/sendAndRecord', validateSentGift ,catchAsync(async (req, res, next
         res.send(e)
     })
     console.log(response.data);
+    const candidate =  await Candidate.findByIdAndUpdate(candidate_id,
+        { $inc: {"total_points": point } }, 
+        {new: true }
+    );
+    console.log(candidate);
     try{
         await sentGiftHistory.save();
         res.send('Vote data sent and saved');

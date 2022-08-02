@@ -30,13 +30,9 @@ const sentGiftHistorySchema = new Schema({
         type:Number,
         required:[true, 'token required'],
     },
-    price:{
-        type:Number,
-        required:[true, 'price required'],
-    },
     point:{
         type:Number,
-        required:[true, 'price required'],
+        required:[true, 'point required'],
     },
 })
 

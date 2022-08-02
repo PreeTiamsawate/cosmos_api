@@ -33,8 +33,7 @@ module.exports.validateSentGift = (req, res, next)=>{
         candidate_id: Joi.string().required(), 
         gift_id: Joi.string().required(), 
         send_date_time: Joi.string().required(), 
-        token: Joi.number().required().min(0),
-        price:Joi.number().required().min(0)
+        token: Joi.number().required().min(0)
     })
     const {error} = sentGiftSchema.validate(req.body);
     if(error){
