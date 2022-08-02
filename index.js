@@ -65,7 +65,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.get('/api/hello', catchAsync(async (req, res, next) => {
-    res.send("Hello 19Jul2022");
+    res.send("Hello 02Aug2022");
 }));
 app.use('/api/candidate', candidateRoutes);
 app.use('/api/user', userRoutes);

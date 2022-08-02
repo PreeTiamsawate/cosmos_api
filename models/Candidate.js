@@ -101,3 +101,5 @@ const Candidate = mongoose.model('Candidate', candidateSchema);
 
 module.exports = Candidate;
 
+
+// db.candidates.updateMany({},{$set: {total_points: 0}} )
