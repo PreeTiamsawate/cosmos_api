@@ -1,0 +1,491 @@
+{
+	"info": {
+		"_postman_id": "4cb9961f-798f-4473-853a-cb177b79e9da",
+		"name": "Cosmos Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12646675"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"5Mrugesh\",\r\n    \"email\": \"5mrugeshpatelcumulative@gmail.com\",\r\n    \"password\": \"mrugesh123\",\r\n    \"mobile\": \"5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/clientapi/signup",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientapi",
+						"signup"
+					]
+				},
+				"description": "StartFragment\n\n```\n{\n  \"username\": \"5Mrugesh\",(mandatory)\n  \"email\": \"5mrugeshpatelcumulative@gmail.com\",(mandatory)\n  \"password\": \"mrugesh123\",(mandatory)\n  \"mobile\": \"5\"(mandatory)\n}\n```\n\nEndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "key",
+						"value": "95182f700496d6c0a27d3bef6e3e6dac",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"mrugeshpatelcumulative@gmail.com\",\r\n    \"password\": \"4mvd37m\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/clientapi/signin",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientapi",
+						"signin"
+					]
+				},
+				"description": "```\n{\n    \"email\": \"mrugeshpatelcumulative@gmail.com\",(mandatory)\n    \"password\": \"4mvd37m\"(mandatory)\n}\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}",
+						"type": "text"
+					},
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/clientapi/user/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientapi",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}",
+						"type": "text"
+					},
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"iammrugesh\",\r\n    \"mobile\": \"7405374066\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/clientapi/updateUser/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientapi",
+						"updateUser",
+						""
+					]
+				},
+				"description": "{  \n\"username\": \"iammrugesh\",(mandatory)  \n\"mobile\": \"7405374066\"(mandatory)  \n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Profile image",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}",
+						"type": "text"
+					},
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"profile\": \"data:image/png;base64,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\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/clientapi/updateUserProfile/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientapi",
+						"updateUserProfile",
+						""
+					]
+				},
+				"description": "{\n\n\"profile\":\"base64\"(mandatory)\n\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"mrugeshpatelcumulative@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/clientapi/forgotPassword",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientapi",
+						"forgotPassword"
+					]
+				},
+				"description": "{  \n\"email\":\"[mrugeshpatelcumulative@gmail.com](mailto:mrugeshpatelcumulative@gmail.com)\"(mandatory)  \n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Top Five Candidate",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}",
+						"type": "text"
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzQ0MzlhMjg5MmI0NzkxOWFjY2UwYyIsImlhdCI6MTY1NzE4ODY1OSwiZXhwIjoxNjU3Mjc1MDU5fQ.PdRo88UpxoDTy0De1o4jhkjbpfM-C5d5JBaU090FdBQ",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/clientapi/getCandidate/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientapi",
+						"getCandidate",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Top Five Voter",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}",
+						"type": "text"
+					},
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/clientapi/getTopFiveVoter/62a6a78bff9c10499b2145f4",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientapi",
+						"getTopFiveVoter",
+						"62a6a78bff9c10499b2145f4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Balance",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}",
+						"type": "text"
+					},
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/clientapi/userBalance/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientapi",
+						"userBalance",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Payment History",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}",
+						"type": "text"
+					},
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/clientapi/paymentHistory",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientapi",
+						"paymentHistory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Vote Log",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userid\" : \"62c6cf4f0771b93cb29f1e20\",\r\n    \"username\": \"iammrugesh\",\r\n    \"email\": \"mrugeshpatelcumulative@gmail.com\",\r\n    \"token\": 10,\r\n    \"point\": 50,\r\n    \"candidate\": \"62a6a78bff9c10499b2145f4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/clientapi/UpdateVoteLog/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientapi",
+						"UpdateVoteLog",
+						""
+					]
+				},
+				"description": "{  \n\"userid\" : \"62c6cf4f0771b93cb29f1e20\",(mandatory)  \n\"username\": \"iammrugesh\",(mandatory)  \n\"email\": \"[mrugeshpatelcumulative@gmail.com](mailto:mrugeshpatelcumulative@gmail.com)\",(mandatory)  \n\"token\": 10,(mandatory)  \n\"point\": 50,(mandatory)  \n\"candidate\": \"62a6a78bff9c10499b2145f4\"(mandatory)  \n}"
+			},
+			"response": []
+		},
+		{
+			"name": "getUserById",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/clientapi/get_user_profile/62c4439a2892b47919acce0c",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientapi",
+						"get_user_profile",
+						"62c4439a2892b47919acce0c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Top Token Spender",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/clientapi/get_top_token_spender/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clientapi",
+						"get_top_token_spender",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPassword",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.globals.get(\"key\");",
+					"pm.globals.get(\"token\");"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "key",
+			"value": "95182f700496d6c0a27d3bef6e3e6dac",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzZjZjRmMDc3MWI5M2NiMjlmMWUyMCIsImlhdCI6MTY1ODMwNDI0NCwiZXhwIjoxNjU4MzkwNjQ0fQ.K9Nra0MklHoso2wZs4E7VuRT8HlZE6TGc7wST1Z1j6w",
+			"type": "string"
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}

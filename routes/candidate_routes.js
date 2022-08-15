@@ -297,9 +297,11 @@ router.patch('/total_points/:id', catchAsync(async (req, res, next) => {
     res.json(newTotalPointsById);
 }));
 router.get('/topfive',catchAsync(async (req, res, next) => {
-    const topFiveCandidates = await Candidate.find({}).sort({total_points:-1}).limit(5);
+    const topFiveCandidates = await Candidate.find({total_points:{$gt:0}}).sort({total_points:-1, code:1}).limit(5);
     res.json(topFiveCandidates);
 
-}))
+}));
+
+
 
 module.exports = router;

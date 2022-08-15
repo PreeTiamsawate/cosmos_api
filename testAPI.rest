@@ -14,7 +14,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExN
     "total_points":500
 }
 ###
-GET http://localhost:3030/api/candidate/topfive
+GET https://cosmos.starhunterent.com/api/candidate/topfive
 
 ###
 GET http://localhost:3000/api/user/testMiddleWare
