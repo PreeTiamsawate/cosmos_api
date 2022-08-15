@@ -8,25 +8,7 @@ const { storage, bucketName, s3Delete } = require('../utils/awsS3');
 
 const upload = multer({ storage:storage })
 
-// router.get('/index', catchAsync(async (req, res, next) => {
-//     const { q, skip , limit} = req.query;   
-//     let candidates = await Candidate
-//     .find({
-//         $or: [
-//             { "code": { "$regex": q, "$options": "i" } },
-//             { "first_name_th": { "$regex": q, "$options": "i" } },
-//             { "first_name_en": { "$regex": q, "$options": "i" } },
-//         ]
-//     }).sort('code').skip(parseInt(skip)-1).limit(parseInt(limit)).lean()
 
-//     for(let i =0; i < candidates.length; i++){
-//         if(candidates[i+1]) candidates[i].next = candidates[i+1]._id ;
-//         else candidates[i].next =null;
-//         if(candidates[i-1]) candidates[i].previous = candidates[i-1]._id ;
-//         else candidates[i].previous =null;
-//     }
-//     res.json(candidates);
-// }));
 router.get('/index', catchAsync(async (req, res, next) => {
     const { q, skip, limit } = req.query;
     let candidates = await Candidate
@@ -136,36 +118,10 @@ router.get('/show/:id', catchAsync(async (req, res, next) => {
     if(nextCand) candidate.next = nextCand._id;
     else candidate.next = null;
     
-    // for (let i = 0; i < candidates.length; i++) {
-    //     if (candidates[i + 1]) candidates[i].next = candidates[i + 1]._id;
-    //     else candidates[i].next = null;
-    //     if (candidates[i - 1]) candidates[i].previous = candidates[i - 1]._id;
-    //     else candidates[i].previous = null;
-    //     if (candidates[i]._id == id) {
-    //         console.log(true);
-    //         var candidate = candidates[i];
-    //     }
-    //     else console.log(false)
-    // }
+    
     res.json(candidate);
 }));
-// router.get('/show/:id', catchAsync(async (req, res, next) => {
-//     const { id } = req.params;
 
-//     let candidates = await Candidate.find({}).sort('code').lean()
-//     for (let i = 0; i < candidates.length; i++) {
-//         if (candidates[i + 1]) candidates[i].next = candidates[i + 1]._id;
-//         else candidates[i].next = null;
-//         if (candidates[i - 1]) candidates[i].previous = candidates[i - 1]._id;
-//         else candidates[i].previous = null;
-//         if (candidates[i]._id == id) {
-//             console.log(true);
-//             var candidate = candidates[i];
-//         }
-//         else console.log(false)
-//     }
-//     res.json(candidate);
-// }));
 router.delete('/delete/:id', authenticateToken, catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const gone = await Candidate.findByIdAndDelete(id);

@@ -74,45 +74,45 @@ app.use('/api/gift', giftRoutes);
 app.use('/api/buyToken', buyTokenRoutes);
 app.use('/api/sentGiftHistory', sentGiftHistory);
 
-app.post('/api/adddate', catchAsync(async (req, res, next) => {
-    const { date_of_birth,message } = req.body;
-    const dateOfBirth = new DateOfBirth({
-        date_of_birth: date_of_birth,
-        message: message
-    })
+// app.post('/api/adddate', catchAsync(async (req, res, next) => {
+//     const { date_of_birth,message } = req.body;
+//     const dateOfBirth = new DateOfBirth({
+//         date_of_birth: date_of_birth,
+//         message: message
+//     })
 
-    const show = await dateOfBirth.save();
-    const dates = await DateOfBirth.find({}).sort('dateOfBirth')
+//     const show = await dateOfBirth.save();
+//     const dates = await DateOfBirth.find({}).sort('dateOfBirth')
 
-    for(let date of dates){
-        date.message = date.message+'Hello';
-    }
-    // await dates.save();
+//     for(let date of dates){
+//         date.message = date.message+'Hello';
+//     }
+//     // await dates.save();
 
-    res.json(dates);
-}));
-app.get('/api/getdate/', catchAsync(async (req, res, next) => {
-    const { id } = req.params;
-    let dates = await DateOfBirth.aggregate([
-        { $match: {} },
-        {
-            $set: {
-                date_of_birth: { $dateToString: { format: "%Y-%m-%d", date: "$date_of_birth" } },
-            }
+//     res.json(dates);
+// }));
+// app.get('/api/getdate/', catchAsync(async (req, res, next) => {
+//     const { id } = req.params;
+//     let dates = await DateOfBirth.aggregate([
+//         { $match: {} },
+//         {
+//             $set: {
+//                 date_of_birth: { $dateToString: { format: "%Y-%m-%d", date: "$date_of_birth" } },
+//             }
 
-        }
-    ])
-    res.json(dates);
-}));
-app.get('/api/getdate/:id', catchAsync(async (req, res, next) => {
-    const { id } = req.params;
-    let date = await DateOfBirth.findOne({
-        "$expr": {
-            "$eq": ["$_id", id]
-        }
-    });
-    res.json(date);
-}));
+//         }
+//     ])
+//     res.json(dates);
+// }));
+// app.get('/api/getdate/:id', catchAsync(async (req, res, next) => {
+//     const { id } = req.params;
+//     let date = await DateOfBirth.findOne({
+//         "$expr": {
+//             "$eq": ["$_id", id]
+//         }
+//     });
+//     res.json(date);
+// }));
 
 app.all('*', async (req, res, next) => {
     next(new ExpressError('Page Not Found', 404))

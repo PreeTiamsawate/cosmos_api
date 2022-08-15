@@ -1,4 +1,4 @@
-GET http://localhost:3030/api/candidate/index?q=&skip=&limit= 
+GET https://cosmos.starhunterent.com/api/candidate/index?q=&skip=&limit= 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzM2OWJjODk5NGQ1MDZhZmU0YWIiLCJpYXQiOjE2NTUyMTA0ODEsImV4cCI6MTY1NTIyMDQ4MX0.WPe5eGevT6QsGqAJosjFmtw-biGMMQOCcFaaXiycwKE 
 
 ###
