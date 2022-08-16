@@ -23,8 +23,8 @@ router.get('/index', catchAsync(async (req, res, next) => {
                 }
             },
             {
-                $set: {
-                    date_of_birth: { $dateToString: { format: "%Y-%m-%d", date: "$date_of_birth" } },
+                $project:{
+                    image_profile: 1, _id: 1, code: 1, first_name_th: 1, last_name_th: 1, first_name_en: 1, last_name_en: 1, nick_name_th: 1, nick_name_en: 1, total_points: 1, candidate_status:1 
                 }
 
             }
@@ -253,9 +253,18 @@ router.patch('/total_points/:id', catchAsync(async (req, res, next) => {
     res.json(newTotalPointsById);
 }));
 router.get('/topfive',catchAsync(async (req, res, next) => {
-    const topFiveCandidates = await Candidate.find({total_points:{$gt:0}}).sort({total_points:-1, code:1}).limit(5);
+    const topFiveCandidates = await Candidate.find({total_points:{$gt:0}}).sort({total_points:-1, code:1})
+    .select('image_profile _id code first_name_th last_name_th first_name_en last_name_en nick_name_th nick_name_en total_points candidate_status')
+    .limit(5);
     res.json(topFiveCandidates);
 
+}));
+router.get('/candidatesbytotalpoints',catchAsync(async (req, res, next) => {
+    const { limit } = req.query;
+    const candidatesbytotalpoints = await Candidate.find({}).sort({total_points:-1, code:1})
+    .select('image_profile _id code first_name_th last_name_th first_name_en last_name_en nick_name_th nick_name_en total_points candidate_status')
+    .limit(parseInt(limit || 100000));
+    res.json(candidatesbytotalpoints);
 }));
 
 

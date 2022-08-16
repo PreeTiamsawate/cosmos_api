@@ -1,4 +1,4 @@
-GET https://cosmos.starhunterent.com/api/candidate/index?q=&skip=&limit= 
+GET http://localhost:3030/api/candidate/index?q=&skip=&limit= 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzM2OWJjODk5NGQ1MDZhZmU0YWIiLCJpYXQiOjE2NTUyMTA0ODEsImV4cCI6MTY1NTIyMDQ4MX0.WPe5eGevT6QsGqAJosjFmtw-biGMMQOCcFaaXiycwKE 
 
 ###
@@ -14,7 +14,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExN
     "total_points":500
 }
 ###
-GET https://cosmos.starhunterent.com/api/candidate/topfive
+GET http://localhost:3030/api/candidate/topfive
 
 ###
 GET http://localhost:3000/api/user/testMiddleWare
@@ -133,3 +133,5 @@ key : '95182f700496d6c0a27d3bef6e3e6dac'
     "point": 50,
     "candidate": "62a6a78bff9c10499b2145f4"
 }
+###
+GET http://localhost:3030/api/candidate/candidatesbytotalpoints?limit=2
