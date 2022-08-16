@@ -135,3 +135,9 @@ key : '95182f700496d6c0a27d3bef6e3e6dac'
 }
 ###
 GET http://localhost:3030/api/candidate/candidatesbytotalpoints?limit=2
+
+###
+PATCH http://localhost:3030/api/toCloudFront/profile_images
+
+###
+PATCH http://localhost:3030/api/toCloudFront/other_images

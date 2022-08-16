@@ -16,6 +16,7 @@ const VoterParameterRoutes = require('./routes/vote_parameter_route');
 const giftRoutes = require('./routes/gift_routes');
 const buyTokenRoutes = require('./routes/buy_token_routes');
 const sentGiftHistory = require('./routes/sent_gift_history_routes');
+const toCloudFrontRoutes = require('./routes/to_cloudfront_routes');
 
 const DateOfBirth = require('./models/DateOfBirth');
 
@@ -73,6 +74,7 @@ app.use('/api/voteParameter', VoterParameterRoutes);
 app.use('/api/gift', giftRoutes);
 app.use('/api/buyToken', buyTokenRoutes);
 app.use('/api/sentGiftHistory', sentGiftHistory);
+app.use('/api/toCloudFront', toCloudFrontRoutes);
 
 // app.post('/api/adddate', catchAsync(async (req, res, next) => {
 //     const { date_of_birth,message } = req.body;
