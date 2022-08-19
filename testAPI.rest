@@ -64,7 +64,7 @@ Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM3ZD
 }
 ###
 
-POST http://localhost:3030/api/user/login
+POST https://cosmos.starhunterent.com/api/user/login
 content-type: application/json
 
 {
@@ -154,3 +154,23 @@ Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZmE0YTNmNz
 GET https://vote.cosmos.starhunterent.com/clientapi/get_user_profile/62e6a07a79c3b3b4be66cfb5
 content-type: application/json
 key : 95182f700496d6c0a27d3bef6e3e6dac
+
+###
+
+POST  https://cosmos.starhunterent.com/api/pageStatus/seed
+content-type: application/json
+
+{
+    "isTopCandidatePageOn": true
+}
+###
+GET  https://cosmos.starhunterent.com/api/pageStatus/getTopCandidatePageStatus
+###
+
+PATCH  https://cosmos.starhunterent.com/api/pageStatus/setTopCandidatePageON
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjllMjAxY2Y4MDhmMDhkNjBiYzllY2QiLCJpYXQiOjE2NjA5MDgyMDMsImV4cCI6MTY2MDkxODIwM30.Qs3o_gurY5hLHPnkiUCa3efZtpqmRMEaPdQ_QqY1vBw
+###
+
+PATCH  https://cosmos.starhunterent.com/api/pageStatus/setTopCandidatePageOFF
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjllMjAxY2Y4MDhmMDhkNjBiYzllY2QiLCJpYXQiOjE2NjA5MDgyMDMsImV4cCI6MTY2MDkxODIwM30.Qs3o_gurY5hLHPnkiUCa3efZtpqmRMEaPdQ_QqY1vBw
+###
