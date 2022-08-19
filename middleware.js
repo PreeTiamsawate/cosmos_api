@@ -25,6 +25,19 @@ module.exports.authenticateToken= (req, res, next)=>{
       });
 }
 
+module.exports.authenticateVoter= (req, res, next)=>{
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if (token == null) return res.send("ACCESS TOKEN NEEDED");
+
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET_VOTER, async (err, userToken) => {
+        if (err) return res.send("INVALID TOKEN INSERTED");
+        console.log("Valid Token");
+        res.locals.voterId = userToken.id;
+        next()
+      });
+}
+
 module.exports.validateSentGift = (req, res, next)=>{
     const sentGiftSchema = Joi.object({
         user_id: Joi.string().required(),

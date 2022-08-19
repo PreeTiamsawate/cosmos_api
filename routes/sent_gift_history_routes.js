@@ -43,15 +43,18 @@ router.post('/sendAndRecord', validateSentGift ,catchAsync(async (req, res, next
     console.log(candidate);
     try{
         await sentGiftHistory.save();
+        console.log('Vote data sent and saved');
         res.send('Vote data sent and saved');
     }catch(e){
         res.send('Vote data sent and not saved');
+        console.log('Vote data sent and not saved');
     }   
 
 }));
 
 router.get('/index', catchAsync(async (req, res, next) => {
     const history = await SentGiftHistory.find({}).sort('send_date_time');
+    console.log('Sent gift history has been called.')
     res.json(history);
 }));
 

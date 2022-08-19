@@ -253,7 +253,7 @@ response (example)
 Edit one Candidate by id (_id field from database) Api-------------------------------------------------
 patch: https://cosmos.starhunterent.com/api/candidate/edit/:id
 header
-Authorization: Authorization: token **access_token**
+Authorization: token **access_token**
 request
 {
     "ref_code": String,
@@ -523,3 +523,19 @@ response (example)
     "candidate_status": "เข้ารอบ"
   }
 ]
+
+Add points to candidate Api -------------------------------------------------------
+patch: https://cosmos.starhunterent.com/api/candidate/addPointsToCandidate
+header
+Authorization: token **voter_access_token(jwt)**
+request
+{
+    "candidate_id": String (required),
+    "points": Number (required),
+}
+response (example)
+{
+  "candidate_id": "62af28485e7718546ba92ce3",
+  "total_points": 1736500,
+  "voter_id": "62fa4a3f720aa4cd4e6e597b"
+}
