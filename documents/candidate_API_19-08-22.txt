@@ -531,7 +531,7 @@ Authorization: token **voter_access_token(jwt)**
 request
 {
     "candidate_id": String (required),
-    "points": Number (required),
+    "vote_token": Number (required),
 }
 response (example)
 {
