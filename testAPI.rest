@@ -2,6 +2,10 @@ GET http://localhost:3030/api/candidate/index?q=&skip=&limit=
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzM2OWJjODk5NGQ1MDZhZmU0YWIiLCJpYXQiOjE2NTUyMTA0ODEsImV4cCI6MTY1NTIyMDQ4MX0.WPe5eGevT6QsGqAJosjFmtw-biGMMQOCcFaaXiycwKE 
 
 ###
+GET http://localhost:3030/api/candidate/show/62a5e7cfff9c10499b2144ff 
+
+###
+
 GET https://cosmos.starhunterent.com/api/hello
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmExNzM2OWJjODk5NGQ1MDZhZmU0YWIiLCJpYXQiOjE2NTUyMTA0ODEsImV4cCI6MTY1NTIyMDQ4MX0.WPe5eGevT6QsGqAJosjFmtw-biGMMQOCcFaaXiycwKE 
 
@@ -85,7 +89,7 @@ Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM3ZD
 ###
 GET https://cosmos.starhunterent.com/api/buyToken/index
 ###
-GET http://localhost:3030/api/buyToken/show/62c7ef3d08503e685a0c602f
+GET http://localhost:3030/api/buyToken/show/62a5e7cfff9c10499b2144ff
 ###
 PATCH  http://localhost:3030/api/buyToken/edit/62c7ef3d08503e685a0c602f
 content-type: application/json
@@ -173,4 +177,16 @@ Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjllMj
 
 PATCH  https://cosmos.starhunterent.com/api/pageStatus/setTopCandidatePageOFF
 Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjllMjAxY2Y4MDhmMDhkNjBiYzllY2QiLCJpYXQiOjE2NjA5MDgyMDMsImV4cCI6MTY2MDkxODIwM30.Qs3o_gurY5hLHPnkiUCa3efZtpqmRMEaPdQ_QqY1vBw
+###
+
+GET http://localhost:3030/api/candidate/topfive
+
+###
+
+
+GET http://localhost:3030/api/candidate/candidatesbytotalpoints?skip=&limit
+
+###
+GET http://localhost:3030/api/candidate/deadzone?skip=&limit=3
+
 ###

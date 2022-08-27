@@ -539,3 +539,56 @@ response (example)
   "total_points": 1736500,
   "voter_id": "62fa4a3f720aa4cd4e6e597b"
 }
+
+Get dead zone candidates by total points from min to max API------------------------------------------
+GET https://cosmos.starhunterent.com/api/candidate/deadzone?limit=3
+limit : limit size of query
+example limit 3 -> query 3 candidates
+response (example)
+[
+  {
+    "image_profile": {
+      "url": "https://d1hjq4ezlko9mj.cloudfront.net/CMS36/Profile Web-36.png-1660550840239-24",
+      "key": "CMS36/Profile Web-36.png-1660550840239-24"
+    },
+    "_id": "62af22755e7718546ba92bef",
+    "code": "CMS36",
+    "first_name_th": "ภัทริกา",
+    "last_name_th": "ใหม่ดี",
+    "first_name_en": "Pattharika",
+    "last_name_en": "Maidee",
+    "nick_name_th": "ชะเอม",
+    "nick_name_en": "Chaaim",
+    "candidate_status": "เข้ารอบ"
+  },
+  {
+    "image_profile": {
+      "url": "https://d1hjq4ezlko9mj.cloudfront.net/CMS30/Profile Web-30.png-1660549446562-12",
+      "key": "CMS30/Profile Web-30.png-1660549446562-12"
+    },
+    "_id": "62af2087d5f39f3f66926c04",
+    "code": "CMS30",
+    "first_name_th": "ศิริวรรณ",
+    "last_name_th": "มุททาหัตถากร",
+    "first_name_en": "Siriwan",
+    "last_name_en": "Muttarhattarkon",
+    "nick_name_th": "ปันหยก",
+    "nick_name_en": "Punyok ",
+    "candidate_status": "เข้ารอบ"
+  },
+  {
+    "image_profile": {
+      "url": "https://d1hjq4ezlko9mj.cloudfront.net/CMS37/Profile Web-37.png-1660550866446-29",
+      "key": "CMS37/Profile Web-37.png-1660550866446-29"
+    },
+    "_id": "62af22c75e7718546ba92bfe",
+    "code": "CMS37",
+    "first_name_th": "ณวงษ์วรรณ",
+    "last_name_th": "รุ่งจันทวงษ์",
+    "first_name_en": "Nahwongwan",
+    "last_name_en": "Rungjuntawong",
+    "nick_name_th": "เพลิน",
+    "nick_name_en": "Plern",
+    "candidate_status": "เข้ารอบ"
+  }
+]

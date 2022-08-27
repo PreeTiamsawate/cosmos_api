@@ -117,6 +117,10 @@ app.use('/api/pageStatus', pageStatusRoutes);
 //     });
 //     res.json(date);
 // }));
+app.get('/api/getclientip', (req, res, next)=>{
+    const ip = req.ips;
+    res.send(ip)
+});
 
 app.all('*', async (req, res, next) => {
     next(new ExpressError('Page Not Found', 404))
