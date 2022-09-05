@@ -266,6 +266,13 @@ router.get('/candidatesbytotalpoints',catchAsync(async (req, res, next) => {
     .limit(parseInt(limit || 100000));
     res.json(candidatesbytotalpoints);
 }));
+router.get('/candidatesbytotalpoints',catchAsync(async (req, res, next) => {
+    const { limit } = req.query;
+    const candidatesbytotalpoints = await Candidate.find({}).sort({total_points:-1, code:1})
+    .select('image_profile _id code first_name_th last_name_th first_name_en last_name_en nick_name_th nick_name_en total_points candidate_status')
+    .limit(parseInt(limit || 100000));
+    res.json(candidatesbytotalpoints);
+}));
 
 
 
