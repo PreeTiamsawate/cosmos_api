@@ -1,0 +1,32 @@
+Page Status API ===========================================
+
+Get Top Candidate Page Status API -----------------------------------------
+
+GET  https://cosmos.starhunterent.com/api/pageStatus/getTopCandidatePageStatus
+
+response(example)
+{
+  "isTopCandidatePageOn": true
+}
+
+Set Top Candidate Page Status to ON API --------------------------------------
+
+PATCH  https://cosmos.starhunterent.com/api/pageStatus/setTopCandidatePageON
+content-type: application/json
+Authorization: token **access_token**
+response (example)
+response(example)
+{
+  "isTopCandidatePageOn": true
+}
+
+Set Top Candidate Page Status to OFF API --------------------------------------
+
+PATCH  https://cosmos.starhunterent.com/api/pageStatus/setTopCandidatePageOFF
+content-type: application/json
+Authorization: token **access_token**
+response (example)
+response(example)
+{
+  "isTopCandidatePageOn": false
+}

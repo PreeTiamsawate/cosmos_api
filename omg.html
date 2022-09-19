@@ -16,9 +16,17 @@
 
 
 <body>
-
+    <div id='container'>
+        
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./candidates-export-profileimage.js"></script>
     <SCript>
+        let imgCont = document.querySelector('#container');
+        for(let img of profileImages){
+            imgCont.innerHTML = imgCont.innerHTML + `<img src="${img.image_profile.url}" width="100" height="100" alt="IMAGES">`
+        }
+
 
         const getData = async function () {
             const res = await axios.post('http://localhost:3000/api/user/login', {

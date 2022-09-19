@@ -1,4 +1,4 @@
-Vote Parameter API Api ========================================================
+Vote Parameter API ========================================================
 
 Get Vote Parameters ---------------------------------------------------------
 GET https://cosmos.starhunterent.com/api/voteParameter/getVoteParams
