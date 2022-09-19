@@ -17,10 +17,11 @@ router.get('/index', catchAsync(async (req, res, next) => {
         .aggregate([
             {
                 $match: {
+                    candidate_status: "เข้ารอบ",
                     $or: [
                         { "code": { "$regex": q, "$options": "i" } },
                         { "first_name_th": { "$regex": q, "$options": "i" } },
-                        { "first_name_en": { "$regex": q, "$options": "i" } },
+                        { "first_name_en": { "$regex": q, "$options": "i" } },  
                     ]
                 }
             },
