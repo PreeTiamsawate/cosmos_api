@@ -268,7 +268,7 @@ router.patch('/total_points/:id', catchAsync(async (req, res, next) => {
     res.json(newTotalPointsById);
 }));
 router.get('/topfive',catchAsync(async (req, res, next) => {
-    const topFiveCandidates = await Candidate.find({total_points:{$gt:0}}).sort({total_points:-1, code:1})
+    const topFiveCandidates = await Candidate.find({total_points:{$gt:0}, candidate_status: "เข้ารอบ"}).sort({total_points:-1, code:1})
     .select('image_profile _id code first_name_th last_name_th first_name_en last_name_en nick_name_th nick_name_en candidate_status')
     .limit(5);
     console.log(`Top five candidates have been called`);
@@ -277,7 +277,7 @@ router.get('/topfive',catchAsync(async (req, res, next) => {
 }));
 router.get('/candidatesbytotalpoints',catchAsync(async (req, res, next) => {
     const { skip,limit } = req.query;
-    const candidatesbytotalpoints = await Candidate.find({}).sort({total_points:-1, code:1})
+    const candidatesbytotalpoints = await Candidate.find({candidate_status: "เข้ารอบ"}).sort({total_points:-1, code:1})
     .select('image_profile _id code first_name_th last_name_th first_name_en last_name_en nick_name_th nick_name_en candidate_status')
     .skip(parseInt(skip || 1) - 1).limit(parseInt(limit || 100000));
 
@@ -286,7 +286,7 @@ router.get('/candidatesbytotalpoints',catchAsync(async (req, res, next) => {
 }));
 router.get('/deadzone',catchAsync(async (req, res, next) => {
     const { skip,limit } = req.query;
-    const candidatesbytotalpoints = await Candidate.find({}).sort({total_points:1, code:1})
+    const candidatesbytotalpoints = await Candidate.find({candidate_status: "เข้ารอบ"}).sort({total_points:1, code:1})
     .select('image_profile _id code first_name_th last_name_th first_name_en last_name_en nick_name_th nick_name_en candidate_status')
     .skip(parseInt(skip || 1) - 1).limit(parseInt(limit || 100000));
 
