@@ -187,6 +187,6 @@ GET http://localhost:3030/api/candidate/topfive
 GET http://localhost:3030/api/candidate/candidatesbytotalpoints?skip=&limit
 
 ###
-GET http://localhost:3030/api/candidate/deadzone?skip=&limit=3
+GET https://cosmos.starhunterent.com/api/candidate/deadzone?skip=&limit=3
 
 ###

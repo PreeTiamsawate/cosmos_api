@@ -19,6 +19,8 @@ const sentGiftHistory = require('./routes/sent_gift_history_routes');
 const toCloudFrontRoutes = require('./routes/to_cloudfront_routes');
 const pageStatusRoutes = require('./routes/page_status_routes');
 
+
+
 const DateOfBirth = require('./models/DateOfBirth');
 
 
@@ -117,7 +119,7 @@ app.use('/api/pageStatus', pageStatusRoutes);
 //     });
 //     res.json(date);
 // }));
-app.get('/api/getclientip', (req, res, next)=>{
+app.get('/api/getclientip', (req, res, next) => {
     const ip = req.ips;
     res.send(ip)
 });
